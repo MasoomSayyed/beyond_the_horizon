@@ -1,67 +1,109 @@
-using System.Collections;
-using System.Collections.Generic;
+//i just removed unused stuff here
 using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-    private Rigidbody2D shipRigidbody2D;
+    public float speed = 5f;
+    public float flapForce = 10f;
+    public Rigidbody2D rb;
 
-    private void Awake()
+    private bool isDiveMode = false;
+    private GameObject water;
+    private BuoyancyEffector2D buoyancyEffector;
+
+    void Start()
     {
-        shipRigidbody2D = GetComponent<Rigidbody2D>();
-    }
+        water = GameObject.FindGameObjectWithTag("Water");
+        if (water == null)
+        {
+            Debug.LogError("Water tag not found in the scene.");
+            return;
+        }
 
+        // Attempt to get the BuoyancyEffector2D from the water object
+        buoyancyEffector = water.GetComponent<BuoyancyEffector2D>();
+        if (buoyancyEffector == null)
+        {
+            Debug.LogError("No BuoyancyEffector2D found on the water object.");
+        }
+    }
     void Update()
     {
-        HandleMovement();
-        HandleRotation();
-    }
-
-    private void HandleMovement()
-    {
-        // Movement of ship
-        Vector3 inputDir = new Vector3(0, 0, 0);
-
-        // just to test jump and sink from spacebar and 'C' key
-        float moveY = 0f;
-
-        if (Input.GetKey(KeyCode.W))
+        //checking if player is in Dive Mode
+        if (isDiveMode)
         {
-            inputDir.x = 1f;
+            //if player IS in dive mode
+            DiveModeMovement();
         }
-        if (Input.GetKey(KeyCode.S))
+        else
         {
-            inputDir.x = -1f;
+            //if player is NOT in dive mode then we call default mode
+            DefaultModeMovement();
+            //if user clicks W,space, or Up arrow to flap
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                Flap();
+            }
         }
+        //clicking space to switch between default n dive mode
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            shipRigidbody2D.AddForce(new Vector2(0, 500));
+            ToggleDiveMode();
         }
-        if (Input.GetKey(KeyCode.C))
-        {
-            moveY = -1f;
-            transform.position += new Vector3(0, moveY) * 10f * Time.deltaTime;
-        }
-
-        Vector3 moveDir = transform.forward * inputDir.z + transform.right * inputDir.x;
-        transform.position += moveDir * 2f * Time.deltaTime;
     }
 
-    private void HandleRotation()
+    void DefaultModeMovement()
     {
-        // For rotation
-        float rotateDir = 0f;
-        if (Input.GetKey(KeyCode.Q))
-        {
-            rotateDir = 1f;
-        }
-        if (Input.GetKey(KeyCode.E))
-        {
-            rotateDir = -1f;
-        }
-
-        float rotateSpeed = 50f;
-
-        transform.eulerAngles += new Vector3(0, 0, rotateDir * rotateSpeed * Time.deltaTime);
+        //this includes both (A&D keys) and (Left&Right arrows) in the horizontal thing
+        float moveInput = Input.GetAxisRaw("Horizontal");
+        Vector2 moveVelocity = new Vector2(moveInput * speed, rb.velocity.y);
+        rb.velocity = moveVelocity;
     }
+
+    void Flap()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, flapForce);
+    }
+
+
+
+    void DiveModeMovement()
+    {
+        // horizontal gets all left n right keys which includes arrows n wasd
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        // vertical gets all up n down keys which includes arrows n wasd
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector2 moveDirection = new Vector2(horizontal, vertical).normalized;
+        rb.velocity = moveDirection * speed;
+    }
+
+    void ToggleDiveMode()
+    {
+        isDiveMode = !isDiveMode;
+        if (isDiveMode)
+        {
+            rb.gravityScale = 5;
+            rb.drag = 2f;  // Water resistance
+        }
+        else
+        {
+            rb.gravityScale = 1;
+            rb.drag = 0;
+        }
+    }
+    //Noor:I'd rather the rotation happen on their own like when i click up,down,left or right.
+    //i can do right+down too for diagonal rotations. reduction of buttons is a good sign for great User Experience
+    //private void HandleRotation()
+    //{
+    //    // For rotation
+    //    float rotateDir = 0f;
+    //    if (Input.GetKey(KeyCode.Q))
+    //        rotateDir = 1f;
+    //    if (Input.GetKey(KeyCode.E))
+    //    {
+    //        rotateDir = -1f;
+    //    }
+    //    float rotateSpeed = 50f;
+    //    transform.eulerAngles += new Vector3(0, 0, rotateDir * rotateSpeed * Time.deltaTime);
+    //}
 }
