@@ -51,4 +51,5 @@ public class PlayerInput : MonoBehaviour
                 break;
         }
     }
+
 }
