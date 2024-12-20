@@ -84,11 +84,15 @@ public class Player_Movement : MonoBehaviour
         {
             rb.gravityScale = 5;
             rb.drag = 2f;  // Water resistance
+
+            //buoyancyEffector.density = .5f;
         }
         else
         {
             rb.gravityScale = 1;
             rb.drag = 0;
+
+            //buoyancyEffector.density = 2f;
         }
     }
     //Noor:I'd rather the rotation happen on their own like when i click up,down,left or right.
