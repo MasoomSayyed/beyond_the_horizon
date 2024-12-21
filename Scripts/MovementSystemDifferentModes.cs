@@ -62,7 +62,6 @@ public class MovementSystemDifferentModes : MonoBehaviour
         {
             playerRigidbody.drag = 3.2f;
             playerRigidbody.gravityScale = 0.2f;
-            isJumping = false;
         }
     }
 
