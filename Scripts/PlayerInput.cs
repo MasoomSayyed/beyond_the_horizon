@@ -7,7 +7,6 @@ public class PlayerInput : MonoBehaviour
     public enum ShipModes
     {
         Sailing,
-        Flying,
         Submarine,
     }
 
@@ -21,6 +20,10 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         ModeSwitch();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            MovementSystemDifferentModes.Instance.JumpAndGlide();
+        }
     }
 
     private void ModeSwitch()
@@ -29,22 +32,18 @@ public class PlayerInput : MonoBehaviour
         {
             shipMode = ShipModes.Sailing;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && shipMode != ShipModes.Submarine)
-        {
-            shipMode = ShipModes.Flying;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && shipMode != ShipModes.Flying)
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             shipMode = ShipModes.Submarine;
         }
+
+        
 
         switch (shipMode)
         {
             case ShipModes.Sailing:
                 MovementSystemDifferentModes.Instance.SailingModeInputs();
-                break;
-            case ShipModes.Flying:
-                MovementSystemDifferentModes.Instance.FlyingModeInputs();
                 break;
             case ShipModes.Submarine:
                 MovementSystemDifferentModes.Instance.SubmarineModeInputs();

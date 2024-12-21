@@ -6,8 +6,12 @@ public class MovementSystemDifferentModes : MonoBehaviour
 {
     public static MovementSystemDifferentModes Instance { get; private set; }
 
+
+
     private Rigidbody2D playerRigidbody;
-    public BuoyancyEffector2D buoyancyEffector2D;
+    private BuoyancyEffector2D buoyancyEffector2D;
+    private bool isJumping = false;
+    private float speed = 300f;
 
     private void Awake()
     {
@@ -15,34 +19,57 @@ public class MovementSystemDifferentModes : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        buoyancyEffector2D = GameObject.FindGameObjectWithTag("Water").GetComponent<BuoyancyEffector2D>();
+    }
+
     public void SailingModeInputs()
     {
         buoyancyEffector2D.density = 2f;
+
         Debug.Log("Siwtched to Sailing mode !");
         float speed = 300f;
 
         float moveInput = Input.GetAxisRaw("Horizontal");
         Vector2 moveVelocity = new Vector2(moveInput * speed * Time.deltaTime, playerRigidbody.velocity.y);
         playerRigidbody.AddForce(moveVelocity);
-        //I'm making a change
+        Glide();
     }
 
-    public void FlyingModeInputs()
+    /* public void FlyingModeInputs()
+     {
+         Debug.Log("Siwtched to flying mode !");
+         float flapForce = 500f;
+
+         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+         {
+             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, flapForce * Time.deltaTime);
+         }
+
+     }*/
+
+    public void JumpAndGlide()
     {
-        Debug.Log("Siwtched to flying mode !");
-        float flapForce = 500f;
+        isJumping = true;
+        float jumpForce = 300f;
+        playerRigidbody.AddForce(Vector3.up * jumpForce);
+    }
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+    private void Glide()
+    {
+        if (Input.GetKeyDown(KeyCode.G) && isJumping)
         {
-            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, flapForce * Time.deltaTime);
+            playerRigidbody.drag = 3.2f;
+            playerRigidbody.gravityScale = 0.2f;
+            isJumping = false;
         }
-
     }
 
     public void SubmarineModeInputs()
     {
         Debug.Log("Siwtched to Submarine mode !");
-        buoyancyEffector2D.density = 0.01f;
+        buoyancyEffector2D.density = 0.1f;
 
         float speed = 100f;
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -51,5 +78,5 @@ public class MovementSystemDifferentModes : MonoBehaviour
         playerRigidbody.velocity = moveDirection * speed * Time.deltaTime;
     }
 
-  
+
 }
