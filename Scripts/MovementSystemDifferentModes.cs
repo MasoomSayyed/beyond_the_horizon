@@ -11,7 +11,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
     private Rigidbody2D playerRigidbody;
     private BuoyancyEffector2D buoyancyEffector2D;
     private bool isJumping = false;
-    private float speed = 300f;
+
 
     private void Awake()
     {
@@ -32,7 +32,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
         float speed = 300f;
 
         float moveInput = Input.GetAxisRaw("Horizontal");
-        Vector2 moveVelocity = new Vector2(moveInput * speed * Time.deltaTime, playerRigidbody.linearVelocity.y);
+        Vector2 moveVelocity = new Vector2(moveInput * speed * Time.deltaTime, 0);
         playerRigidbody.AddForce(moveVelocity);
         Glide();
     }
@@ -60,8 +60,8 @@ public class MovementSystemDifferentModes : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G) && isJumping)
         {
-            playerRigidbody.linearDamping = 3.2f;
-            playerRigidbody.gravityScale = 0.2f;
+            playerRigidbody.drag = 1f;
+            playerRigidbody.gravityScale = 0.4f;
         }
     }
 
@@ -69,12 +69,13 @@ public class MovementSystemDifferentModes : MonoBehaviour
     {
         Debug.Log("Siwtched to Submarine mode !");
         buoyancyEffector2D.density = 0.1f;
+        playerRigidbody.gravityScale = 3f;
 
         float speed = 100f;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector2 moveDirection = new Vector2(horizontal, vertical).normalized;
-        playerRigidbody.linearVelocity = moveDirection * speed * Time.deltaTime;
+        playerRigidbody.velocity = moveDirection * speed * Time.deltaTime;
     }
 
 
