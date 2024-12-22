@@ -32,7 +32,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
         float speed = 300f;
 
         float moveInput = Input.GetAxisRaw("Horizontal");
-        Vector2 moveVelocity = new Vector2(moveInput * speed * Time.deltaTime, playerRigidbody.velocity.y);
+        Vector2 moveVelocity = new Vector2(moveInput * speed * Time.deltaTime, playerRigidbody.linearVelocity.y);
         playerRigidbody.AddForce(moveVelocity);
         Glide();
     }
@@ -60,7 +60,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G) && isJumping)
         {
-            playerRigidbody.drag = 3.2f;
+            playerRigidbody.linearDamping = 3.2f;
             playerRigidbody.gravityScale = 0.2f;
         }
     }
@@ -74,7 +74,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector2 moveDirection = new Vector2(horizontal, vertical).normalized;
-        playerRigidbody.velocity = moveDirection * speed * Time.deltaTime;
+        playerRigidbody.linearVelocity = moveDirection * speed * Time.deltaTime;
     }
 
 

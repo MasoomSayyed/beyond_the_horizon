@@ -56,13 +56,13 @@ public class Player_Movement : MonoBehaviour
     {
         //this includes both (A&D keys) and (Left&Right arrows) in the horizontal thing
         float moveInput = Input.GetAxisRaw("Horizontal");
-        Vector2 moveVelocity = new Vector2(moveInput * speed, rb.velocity.y);
-        rb.velocity = moveVelocity;
+        Vector2 moveVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
+        rb.linearVelocity = moveVelocity;
     }
 
     void Flap()
     {
-        rb.velocity = new Vector2(rb.velocity.x, flapForce);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, flapForce);
     }
 
 
@@ -74,7 +74,7 @@ public class Player_Movement : MonoBehaviour
         // vertical gets all up n down keys which includes arrows n wasd
         float vertical = Input.GetAxisRaw("Vertical");
         Vector2 moveDirection = new Vector2(horizontal, vertical).normalized;
-        rb.velocity = moveDirection * speed;
+        rb.linearVelocity = moveDirection * speed;
     }
 
     void ToggleDiveMode()
@@ -83,14 +83,14 @@ public class Player_Movement : MonoBehaviour
         if (isDiveMode)
         {
             rb.gravityScale = 5;
-            rb.drag = 2f;  // Water resistance
+            rb.linearDamping = 2f;  // Water resistance
 
             //buoyancyEffector.density = .5f;
         }
         else
         {
             rb.gravityScale = 1;
-            rb.drag = 0;
+            rb.linearDamping = 0;
 
             //buoyancyEffector.density = 2f;
         }
