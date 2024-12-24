@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MovementSystemDifferentModes : MonoBehaviour
 {
@@ -26,14 +27,19 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
     public void SailingModeInputs()
     {
-        buoyancyEffector2D.density = 2f;
 
         Debug.Log("Siwtched to Sailing mode !");
+
+        buoyancyEffector2D.density = 3f;
+        playerRigidbody.gravityScale = 1f;
+
         float speed = 300f;
 
         float moveInput = Input.GetAxisRaw("Horizontal");
-        Vector2 moveVelocity = new Vector2(moveInput * speed * Time.deltaTime, 0);
-        playerRigidbody.AddForce(moveVelocity);
+        Vector2 moveDir = new Vector2(moveInput, 0);
+        playerRigidbody.AddForce(moveDir * speed * Time.deltaTime);
+        transform.right = moveDir;
+
         Glide();
     }
 
@@ -60,7 +66,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G) && isJumping)
         {
-            playerRigidbody.linearDamping = 1f;
+            playerRigidbody.drag = 1f;
             playerRigidbody.gravityScale = 0.4f;
         }
     }
@@ -68,14 +74,17 @@ public class MovementSystemDifferentModes : MonoBehaviour
     public void SubmarineModeInputs()
     {
         Debug.Log("Siwtched to Submarine mode !");
-        buoyancyEffector2D.density = 0.1f;
-        playerRigidbody.gravityScale = 3f;
 
-        float speed = 100f;
+        buoyancyEffector2D.density = 0.4f;
+        playerRigidbody.gravityScale = 0.5f;
+
+        float speed = 500f;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector2 moveDirection = new Vector2(horizontal, vertical).normalized;
-        playerRigidbody.linearVelocity = moveDirection * speed * Time.deltaTime;
+        playerRigidbody.AddForce(moveDirection * speed * Time.deltaTime);
+
+        transform.right = Vector3.Slerp(transform.right, moveDirection, Time.deltaTime);
     }
 
 
