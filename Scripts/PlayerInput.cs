@@ -20,10 +20,10 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         ModeSwitch();
-        if (Input.GetKeyDown(KeyCode.Space) && shipMode == ShipModes.Sailing)
-        {
-            MovementSystemDifferentModes.Instance.JumpAndGlide();
-        }
+        /* if (Input.GetKeyDown(KeyCode.Space) && shipMode == ShipModes.Sailing)
+         {
+             MovementSystemDifferentModes.Instance.JumpAndGlide();
+         }*/
     }
 
     private void ModeSwitch()
@@ -43,9 +43,11 @@ public class PlayerInput : MonoBehaviour
         switch (shipMode)
         {
             case ShipModes.Sailing:
+                // Debug.Log("Siwtched to Sailing mode !");
                 MovementSystemDifferentModes.Instance.SailingModeInputs();
                 break;
             case ShipModes.Submarine:
+                // Debug.Log("Siwtched to Submarine mode !");
                 MovementSystemDifferentModes.Instance.SubmarineModeInputs();
                 break;
         }

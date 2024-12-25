@@ -10,7 +10,6 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
 
     private Rigidbody2D playerRigidbody;
-    private BuoyancyEffector2D buoyancyEffector2D;
     private bool isJumping = false;
 
 
@@ -20,17 +19,9 @@ public class MovementSystemDifferentModes : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
-    {
-        buoyancyEffector2D = GameObject.FindGameObjectWithTag("Water").GetComponent<BuoyancyEffector2D>();
-    }
-
     public void SailingModeInputs()
     {
-
-        Debug.Log("Siwtched to Sailing mode !");
-
-        buoyancyEffector2D.density = 3f;
+        playerRigidbody.mass = 1f;
         playerRigidbody.gravityScale = 1f;
 
         float speed = 300f;
@@ -38,7 +29,9 @@ public class MovementSystemDifferentModes : MonoBehaviour
         float moveInput = Input.GetAxisRaw("Horizontal");
         Vector2 moveDir = new Vector2(moveInput, 0);
         playerRigidbody.AddForce(moveDir * speed * Time.deltaTime);
-        transform.right = moveDir;
+
+        //float rotationSpeed = 10;
+        transform.right = moveDir;   //Vector3.Slerp(transform.right, moveDir, rotationSpeed * Time.deltaTime);
 
         Glide();
     }
@@ -57,34 +50,38 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
     public void JumpAndGlide()
     {
-        isJumping = true;
         float jumpForce = 300f;
         playerRigidbody.AddForce(Vector3.up * jumpForce);
     }
 
     private void Glide()
     {
-        if (Input.GetKeyDown(KeyCode.G) && isJumping)
+        if (Input.GetKey(KeyCode.Space))
         {
-            playerRigidbody.drag = 1f;
-            playerRigidbody.gravityScale = 0.4f;
+            playerRigidbody.drag = .3f;
+            playerRigidbody.gravityScale = .1f;
         }
+    }
+
+    public void Propel()
+    {
+        float propelForce = 500f;
+        playerRigidbody.AddForce(Vector3.up * propelForce);
     }
 
     public void SubmarineModeInputs()
     {
-        Debug.Log("Siwtched to Submarine mode !");
+        playerRigidbody.mass = 8.5f;
+        playerRigidbody.gravityScale = 0.1f;
 
-        buoyancyEffector2D.density = 0.4f;
-        playerRigidbody.gravityScale = 0.5f;
-
-        float speed = 500f;
+        float speed = 1000f;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector2 moveDirection = new Vector2(horizontal, vertical).normalized;
         playerRigidbody.AddForce(moveDirection * speed * Time.deltaTime);
 
-        transform.right = Vector3.Slerp(transform.right, moveDirection, Time.deltaTime);
+        float rotationSpeed = 5f;
+        transform.right = Vector3.Slerp(transform.right, moveDirection, rotationSpeed * Time.deltaTime);
     }
 
 
