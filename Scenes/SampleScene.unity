@@ -567,6 +567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 409378210}
   - component: {fileID: 409378213}
+  - component: {fileID: 409378214}
   m_Layer: 0
   m_Name: ShipImage
   m_TagString: Untagged
@@ -584,7 +585,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 908762178}
@@ -643,6 +644,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &409378214
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409378209}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86551346ae22a214999cf12a33f3983d, type: 2}
+  m_CullingMode: 2
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 1
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &532819961
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +826,7 @@ Transform:
   m_GameObject: {fileID: 591347295}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.54, y: 3.22, z: -6.4}
+  m_LocalPosition: {x: 9.92, y: 7.45, z: -6.4}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -852,7 +875,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10.370434
+  orthographic size: 3.1082451
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1214,7 +1237,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.2630434, y: -0.10645318}
+  m_Offset: {x: 0.2339735, y: -0.16459346}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1224,7 +1247,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.2472038, y: 0.86295867}
+  m_Size: {x: 2.6657982, y: 0.6885371}
   m_EdgeRadius: 0
 --- !u!50 &908762177
 Rigidbody2D:
@@ -1422,6 +1445,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 439525603295094284, guid: 6d40a49137971a04a856aac7fa4687ad, type: 3}
+      propertyPath: numSplinePoints
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1849715097406855363, guid: 6d40a49137971a04a856aac7fa4687ad, type: 3}
       propertyPath: m_Name
       value: Water (1)
@@ -2075,6 +2102,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 439525603295094284, guid: 6d40a49137971a04a856aac7fa4687ad, type: 3}
+      propertyPath: numSplinePoints
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1849715097406855363, guid: 6d40a49137971a04a856aac7fa4687ad, type: 3}
       propertyPath: m_Name
       value: Water

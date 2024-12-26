@@ -10,6 +10,9 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
 
     private Rigidbody2D playerRigidbody;
+
+    private Vector2 lastMoveDir;
+
     private bool isJumping = false;
 
 
@@ -28,10 +31,14 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
         float moveInput = Input.GetAxisRaw("Horizontal");
         Vector2 moveDir = new Vector2(moveInput, 0);
+        if (moveDir.x != 0)
+        {
+            lastMoveDir.x = moveDir.x;
+        }
         playerRigidbody.AddForce(moveDir * speed * Time.deltaTime);
 
         //float rotationSpeed = 10;
-        transform.right = moveDir;   //Vector3.Slerp(transform.right, moveDir, rotationSpeed * Time.deltaTime);
+        transform.right = lastMoveDir;   //Vector3.Slerp(transform.right, moveDir, rotationSpeed * Time.deltaTime);
 
         Glide();
     }
