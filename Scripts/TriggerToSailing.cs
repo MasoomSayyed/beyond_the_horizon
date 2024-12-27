@@ -6,6 +6,7 @@ public class TriggerToSailing : MonoBehaviour
 {
     private PlayerInput playerInput;
 
+    private bool isJumping = false;
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -16,8 +17,14 @@ public class TriggerToSailing : MonoBehaviour
         if (collision.CompareTag("Sailing") && playerInput.shipMode == PlayerInput.ShipModes.Submarine)
         {
             playerInput.shipMode = PlayerInput.ShipModes.Sailing;
+            isJumping = true;
             MovementSystemDifferentModes.Instance.Propel();
         }
+    }
+
+    public bool IsJumping()
+    {
+        return isJumping;
     }
 
 }

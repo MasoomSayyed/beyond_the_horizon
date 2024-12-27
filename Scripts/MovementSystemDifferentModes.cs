@@ -91,5 +91,8 @@ public class MovementSystemDifferentModes : MonoBehaviour
         transform.right = Vector3.Slerp(transform.right, moveDirection, rotationSpeed * Time.deltaTime);
     }
 
-
+    public Vector3 GetEulerAngle()
+    {
+        return transform.eulerAngles;
+    }
 }
