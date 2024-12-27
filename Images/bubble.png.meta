@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 209adc7f2d509734498b237e08b643a9
+guid: 8ac93eed3d441a14cbfce1d5a1d031af
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -134,91 +134,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: ShipSpritesheet_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1524
-        height: 1872
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2016b7f896a7b6a4e8f08de38dd0812f
-      internalID: 1567277661
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ShipSpritesheet_1
-      rect:
-        serializedVersion: 2
-        x: 1524
-        y: 0
-        width: 1524
-        height: 1872
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 085e05b759dec8846811f841ab27f9d2
-      internalID: -106837999
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ShipSpritesheet_2
-      rect:
-        serializedVersion: 2
-        x: 3048
-        y: 0
-        width: 1524
-        height: 1872
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b4924e1563054a47bd820593fca0de6
-      internalID: -730644613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ShipSpritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 4572
-        y: 0
-        width: 1524
-        height: 1872
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44493e23213840741842aa7f12f60d3a
-      internalID: 2102308930
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -229,11 +145,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      ShipSpritesheet_0: 1567277661
-      ShipSpritesheet_1: -106837999
-      ShipSpritesheet_2: -730644613
-      ShipSpritesheet_3: 2102308930
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

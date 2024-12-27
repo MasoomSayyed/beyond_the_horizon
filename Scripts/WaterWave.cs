@@ -111,7 +111,7 @@ public class WaterWave : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void PlayerTrigger(Collider2D collider, float force)
     {
         if (collider.CompareTag("Player"))
         {
@@ -119,12 +119,12 @@ public class WaterWave : MonoBehaviour
             if (ship != null)
             {
                 Bounds spriteBounds = ship.GetComponentInChildren<SpriteRenderer>().bounds;
-                var contactPointStartX = spriteBounds.center[0] - (spriteBounds.size[0]/2);
-                var contactPointEndX = spriteBounds.center[0] + (spriteBounds.size[0]/2);
+                var contactPointStartX = spriteBounds.center[0] - (spriteBounds.size[0] / 2);
+                var contactPointEndX = spriteBounds.center[0] + (spriteBounds.size[0] / 2);
                 List<int> splineContactIndices = new List<int>();
                 for (int i = 0; i < waterSprings.Count; i++)
                 {
-                    var splineWolrdPosX = transform.TransformPoint(spline.GetPosition(i+2)).x;
+                    var splineWolrdPosX = transform.TransformPoint(spline.GetPosition(i + 2)).x;
                     if (splineWolrdPosX >= contactPointStartX && splineWolrdPosX <= contactPointEndX)
                     {
                         splineContactIndices.Add(i);
@@ -136,5 +136,14 @@ public class WaterWave : MonoBehaviour
                 }
             }
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        PlayerTrigger(collider, force);
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        PlayerTrigger(collider, - force);
     }
 }
