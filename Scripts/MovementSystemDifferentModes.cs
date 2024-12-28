@@ -14,6 +14,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
     private Vector2 lastMoveDir;
 
     private bool isJumping = false;
+    private bool isGliding = false;
 
 
     private void Awake()
@@ -65,8 +66,13 @@ public class MovementSystemDifferentModes : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            isGliding = true;
             playerRigidbody.drag = .3f;
             playerRigidbody.gravityScale = .1f;
+        }
+        else
+        {
+            isGliding = false;
         }
     }
 
@@ -94,5 +100,10 @@ public class MovementSystemDifferentModes : MonoBehaviour
     public Vector3 GetEulerAngle()
     {
         return transform.eulerAngles;
+    }
+
+    public bool IsGliding()
+    {
+        return isGliding;
     }
 }
