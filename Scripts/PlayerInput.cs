@@ -20,10 +20,10 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         ModeSwitch();
-        /* if (Input.GetKeyDown(KeyCode.Space) && shipMode == ShipModes.Sailing)
-         {
-             MovementSystemDifferentModes.Instance.JumpAndGlide();
-         }*/
+        if (Input.GetKeyDown(KeyCode.LeftShift) && shipMode == ShipModes.Submarine)
+        {
+            MovementSystemDifferentModes.Instance.Dash();
+        }
     }
 
     private void ModeSwitch()

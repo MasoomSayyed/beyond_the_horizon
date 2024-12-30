@@ -11,7 +11,8 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
     private Rigidbody2D playerRigidbody;
 
-    private Vector2 lastMoveDir;
+    private Vector2 lastMoveDirSail;
+    private Vector2 lastMoveDirSub;
 
     private bool isJumping = false;
     private bool isGliding = false;
@@ -34,12 +35,12 @@ public class MovementSystemDifferentModes : MonoBehaviour
         Vector2 moveDir = new Vector2(moveInput, 0);
         if (moveDir.x != 0)
         {
-            lastMoveDir.x = moveDir.x;
+            lastMoveDirSail.x = moveDir.x;
         }
         playerRigidbody.AddForce(moveDir * speed * Time.deltaTime);
 
         //float rotationSpeed = 10;
-        transform.right = lastMoveDir;   //Vector3.Slerp(transform.right, moveDir, rotationSpeed * Time.deltaTime);
+        transform.right = lastMoveDirSail;   //Vector3.Slerp(transform.right, moveDir, rotationSpeed * Time.deltaTime);
 
         Glide();
     }
@@ -90,11 +91,14 @@ public class MovementSystemDifferentModes : MonoBehaviour
         float speed = 1000f;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector2 moveDirection = new Vector2(horizontal, vertical).normalized;
-        playerRigidbody.AddForce(moveDirection * speed * Time.deltaTime);
+        Vector2 moveDir = new Vector2(horizontal, vertical).normalized;
+
+        lastMoveDirSub = moveDir;
+
+        playerRigidbody.AddForce(moveDir * speed * Time.deltaTime);
 
         float rotationSpeed = 5f;
-        transform.right = Vector3.Slerp(transform.right, moveDirection, rotationSpeed * Time.deltaTime);
+        transform.right = Vector3.Lerp(transform.right, lastMoveDirSub, rotationSpeed * Time.deltaTime);
     }
 
     public Vector3 GetEulerAngle()
@@ -105,5 +109,11 @@ public class MovementSystemDifferentModes : MonoBehaviour
     public bool IsGliding()
     {
         return isGliding;
+    }
+
+    public void Dash()
+    {
+        float dashForce = 50f;
+        playerRigidbody.AddForce(lastMoveDirSub * dashForce, ForceMode2D.Impulse);
     }
 }

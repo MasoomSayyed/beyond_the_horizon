@@ -20,6 +20,7 @@ public class TriggerToSailing : MonoBehaviour
             isJumping = true;
             MovementSystemDifferentModes.Instance.Propel();
         }
+       
     }
 
     public bool IsJumping()
