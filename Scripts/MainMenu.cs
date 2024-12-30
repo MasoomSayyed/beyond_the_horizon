@@ -14,6 +14,16 @@ public class MainMenu : MonoBehaviour
 
     public void StarGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Story");
+    }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("ExitScene");
+    }
+
+    public void Play()
+    {
+        SceneManager.LoadScene("Test Area");
     }
 }
