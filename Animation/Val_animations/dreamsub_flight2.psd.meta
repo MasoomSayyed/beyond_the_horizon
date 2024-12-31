@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dreamsub_flight2_0: 3110534375560433119
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

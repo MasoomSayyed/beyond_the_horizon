@@ -59,11 +59,11 @@ public class WaterWave : MonoBehaviour
     }
 
     public void PropagateWaves()
-    {   
+    {
         // Update Water Springs
         for (int i = 0; i < waterSprings.Count; i++)
         {
-            spline.SetPosition(i + 2, waterSprings[i].WaterSpringEffect(spline.GetPosition(i+2).x, spline.GetPosition(i+2).y));
+            spline.SetPosition(i + 2, waterSprings[i].WaterSpringEffect(spline.GetPosition(i + 2).x, spline.GetPosition(i + 2).y));
         }
         float[] leftHeightDiffs = new float[waterSprings.Count];
         float[] rightHeightDiffs = new float[waterSprings.Count];
@@ -140,10 +140,11 @@ public class WaterWave : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         PlayerTrigger(collider, force);
+        TriggerToSailing.Instance.SetIsJumpingFalse();
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        PlayerTrigger(collider, - force);
+        PlayerTrigger(collider, -force);
     }
 }

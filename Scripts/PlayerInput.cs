@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -22,6 +23,7 @@ public class PlayerInput : MonoBehaviour
         ModeSwitch();
         if (Input.GetKeyDown(KeyCode.LeftShift) && shipMode == ShipModes.Submarine)
         {
+            MovementSystemDifferentModes.Instance.DashPropelTimer();
             MovementSystemDifferentModes.Instance.Dash();
         }
     }

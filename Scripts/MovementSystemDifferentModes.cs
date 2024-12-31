@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,15 +9,15 @@ public class MovementSystemDifferentModes : MonoBehaviour
 {
     public static MovementSystemDifferentModes Instance { get; private set; }
 
-
+    private Coroutine dashPropelTimerCoroutine;
 
     private Rigidbody2D playerRigidbody;
 
     private Vector2 lastMoveDirSail;
     private Vector2 lastMoveDirSub;
 
-    private bool isJumping = false;
     private bool isGliding = false;
+    private bool canPropel = false;
 
 
     private void Awake()
@@ -45,18 +47,6 @@ public class MovementSystemDifferentModes : MonoBehaviour
         Glide();
     }
 
-    /* public void FlyingModeInputs()
-     {
-         Debug.Log("Siwtched to flying mode !");
-         float flapForce = 500f;
-
-         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-         {
-             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, flapForce * Time.deltaTime);
-         }
-
-     }*/
-
     public void JumpAndGlide()
     {
         float jumpForce = 300f;
@@ -79,7 +69,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
     public void Propel()
     {
-        float propelForce = 500f;
+        float propelForce = 1000f;
         playerRigidbody.AddForce(Vector3.up * propelForce);
     }
 
@@ -110,10 +100,33 @@ public class MovementSystemDifferentModes : MonoBehaviour
     {
         return isGliding;
     }
+    public bool CanPropel()
+    {
+        return canPropel;
+    }
+
 
     public void Dash()
     {
         float dashForce = 50f;
         playerRigidbody.AddForce(lastMoveDirSub * dashForce, ForceMode2D.Impulse);
+    }
+
+    public void DashPropelTimer()
+    {
+        if (dashPropelTimerCoroutine != null)
+        {
+            StopCoroutine(dashPropelTimerCoroutine);
+        }
+
+        dashPropelTimerCoroutine = StartCoroutine(DashPropelTimerCoroutine());
+    }
+
+    private IEnumerator DashPropelTimerCoroutine()
+    {
+        float dashPropelWaitTimer = 1.5f;
+        canPropel = true;
+        yield return new WaitForSeconds(dashPropelWaitTimer);
+        canPropel = false;
     }
 }

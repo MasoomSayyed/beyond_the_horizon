@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class TriggerToSailing : MonoBehaviour
 {
+    public static TriggerToSailing Instance { get; private set; }
+
     private PlayerInput playerInput;
 
     private bool isJumping = false;
     private void Awake()
     {
+        Instance = this;
         playerInput = GetComponent<PlayerInput>();
     }
 
@@ -18,14 +21,23 @@ public class TriggerToSailing : MonoBehaviour
         {
             playerInput.shipMode = PlayerInput.ShipModes.Sailing;
             isJumping = true;
-            MovementSystemDifferentModes.Instance.Propel();
+            if (MovementSystemDifferentModes.Instance.CanPropel())
+            {
+                MovementSystemDifferentModes.Instance.Propel();
+            }
         }
-       
+
     }
 
     public bool IsJumping()
     {
         return isJumping;
+    }
+
+    public void SetIsJumpingFalse()
+    {
+
+        isJumping = false;
     }
 
 }

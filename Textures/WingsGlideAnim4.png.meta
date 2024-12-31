@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WingsGlideAnim4_0: 8397913250312704407
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

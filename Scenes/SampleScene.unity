@@ -1174,13 +1174,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839779173}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.13, y: -2.7, z: 7.4651546}
-  m_LocalScale: {x: 5.5494475, y: 1.2215829, z: 0.056890354}
+  m_LocalRotation: {x: -0, y: -0, z: -0.70939916, w: 0.704807}
+  m_LocalPosition: {x: -11.51, y: 1.0419, z: 7.4651546}
+  m_LocalScale: {x: 15.478032, y: 4.1683702, z: 0.11813102}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1758569303}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.372}
 --- !u!253 &1839779175
 BuoyancyEffector2D:
   m_ObjectHideFlags: 0
@@ -1197,8 +1197,8 @@ BuoyancyEffector2D:
   m_Density: 2
   m_LinearDrag: 5
   m_AngularDrag: 5
-  m_FlowAngle: 0
-  m_FlowMagnitude: -50
+  m_FlowAngle: 90
+  m_FlowMagnitude: 5
   m_FlowVariation: 0
 --- !u!61 &1839779176
 BoxCollider2D:
