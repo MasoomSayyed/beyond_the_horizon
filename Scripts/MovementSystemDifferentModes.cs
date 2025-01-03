@@ -58,7 +58,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             isGliding = true;
-            playerRigidbody.drag = .3f;
+            playerRigidbody.linearDamping = .3f;
             playerRigidbody.gravityScale = .1f;
         }
         else
