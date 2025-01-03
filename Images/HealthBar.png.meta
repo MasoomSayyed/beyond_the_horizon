@@ -122,6 +122,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -158,9 +171,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+<<<<<<<< HEAD:Images/HealthBar.png.meta
     spriteCustomMetadata:
       entries: []
     nameFileIdTable: {}
+========
+    nameFileIdTable:
+      WingsGlideAnim4_0: 8397913250312704407
+>>>>>>>> d11d5d846871ad4bab8a75e1983f587d7cd5c339:Textures/WingsGlideAnim4.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
