@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        if (FindObjectsOfType<MainMenu>().Length > 1)
+        if (FindObjectsByType<MainMenu>(FindObjectsSortMode.None).Length > 1)
         {
             Destroy(gameObject);
         }
