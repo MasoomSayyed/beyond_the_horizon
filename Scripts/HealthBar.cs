@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour
     private float HealthToDeplete = 40f;
     public Image  healthBar;
 
-    private float currentStamina;
+    private float currentHealth;
 
     private void Awake()
     {
