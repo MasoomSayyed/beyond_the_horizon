@@ -24,7 +24,11 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && shipMode == ShipModes.Submarine)
         {
             MovementSystemDifferentModes.Instance.DashPropelTimer();
-            MovementSystemDifferentModes.Instance.Dash();
+            if (StaminaBar.Instance.IsSprintingAllowed())
+            {
+                StaminaBar.Instance.DepleteStamina();
+                MovementSystemDifferentModes.Instance.Dash();
+            }
         }
     }
 
