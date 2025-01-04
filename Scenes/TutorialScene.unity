@@ -7029,6 +7029,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4341747025894649551, guid: b0ca2adcba0732d429fe947924038114, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4874896001680007429, guid: b0ca2adcba0732d429fe947924038114, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.18
@@ -34261,7 +34265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6596264898534191752, guid: 6d40a49137971a04a856aac7fa4687ad, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6596264898534191752, guid: 6d40a49137971a04a856aac7fa4687ad, type: 3}
       propertyPath: m_MaskInteraction
