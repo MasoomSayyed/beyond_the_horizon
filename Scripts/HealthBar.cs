@@ -8,13 +8,20 @@ public class HealthBar : MonoBehaviour
     public static HealthBar Instance;
 
     private float maxHealth = 100f;
-    private float HealthToDeplete = 40f;
-    public Image  healthBar;
+    [SerializeField] private Image healthBarImage;
 
     private float currentHealth;
 
     private void Awake()
     {
         Instance = this;
+        currentHealth = maxHealth;
+        healthBarImage.fillAmount = currentHealth;
+    }
+
+    public void TakeDamage(int Damage)
+    {
+        currentHealth -= Damage;
+        healthBarImage.fillAmount = currentHealth / maxHealth;
     }
 }

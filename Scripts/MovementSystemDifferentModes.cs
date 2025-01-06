@@ -81,14 +81,32 @@ public class MovementSystemDifferentModes : MonoBehaviour
         float speed = 1000f;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector2 moveDir = new Vector2(horizontal, vertical).normalized;
+        Vector3 moveDir = new Vector3(horizontal, vertical).normalized;
 
-        lastMoveDirSub = moveDir;
+        if (moveDir != Vector3.zero)
+        {
+            lastMoveDirSub = moveDir;
+        }
 
         playerRigidbody.AddForce(moveDir * speed * Time.deltaTime);
 
         float rotationSpeed = 5f;
-        transform.right = Vector3.Lerp(transform.right, lastMoveDirSub, rotationSpeed * Time.deltaTime);
+        float angle = Mathf.Atan2(lastMoveDirSub.y, lastMoveDirSub.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), Time.deltaTime * rotationSpeed);
+
+        Vector3 localScale = Vector3.one;
+        if (angle > 90 || angle < -90)
+        {
+            localScale.y = -1f;
+        }
+        else
+        {
+            localScale.y = +1f;
+        }
+
+        transform.localScale = localScale;
+
+        //transform.right = Vector3.Lerp(transform.right, lastMoveDirSub, rotationSpeed * Time.deltaTime);
     }
 
     public Vector3 GetEulerAngle()

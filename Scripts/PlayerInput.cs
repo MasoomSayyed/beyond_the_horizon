@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    public static PlayerInput Instance;
+
     public enum ShipModes
     {
         Sailing,
@@ -13,6 +15,10 @@ public class PlayerInput : MonoBehaviour
 
     public ShipModes shipMode;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         shipMode = ShipModes.Sailing;
@@ -34,12 +40,12 @@ public class PlayerInput : MonoBehaviour
 
     private void ModeSwitch()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && shipMode == ShipModes.Submarine)
+        if (Input.GetKeyDown(KeyCode.Q) && shipMode != ShipModes.Submarine)
         {
             shipMode = ShipModes.Sailing;
         }
 
-        else if (Input.GetKeyDown(KeyCode.Q) && shipMode == ShipModes.Sailing)
+        if (Input.GetKeyDown(KeyCode.Q) && shipMode == ShipModes.Sailing)
         {
             shipMode = ShipModes.Submarine;
         }
