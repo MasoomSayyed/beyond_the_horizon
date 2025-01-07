@@ -204,7 +204,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 310933786}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Play
+        m_MethodName: MenuScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PROLOGUE
+  m_text: ERROR!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -697,7 +697,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PLAY
+  m_text: REPLAY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -889,8 +889,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.49, y: 0}
-  m_SizeDelta: {x: 671.57, y: 200}
+  m_AnchoredPosition: {x: 1.14, y: 0}
+  m_SizeDelta: {x: 675.96, y: 233.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570806557
 MonoBehaviour:
@@ -912,14 +912,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cyril is a young man who lives in a quiet fishing village. Born unable
-    to walk, he was teased and ostracized by his peers. But what he lacked in physical
-    ability, he made up for in brains. As a brilliant engineer, he spent his life
-    designing advanced contraptions and machines. One day, he comes across an ancient
-    slab that washed up on the beach near his house. Decoding its ancient message,
-    he found that it told of the legendary lost civilization of Avalon, which was
-    said to have disappeared into the sky. He set off in his invention Volans, a
-    transformable amphibious ship, to reach Avalon and discover its secrets.
+  m_text: "Hey there, Traveler!\nI am Cyril, your ever-curious companion. I have
+    temporarily hacked into the game to share my heartfelt thanks for joining me
+    on this incredible journey. Your courage, curiosity, and persistence are inspiring!\nAs
+    you have explored alongside me, you have seen what worked brilliantly and what
+    might need fixing. Please share your feedback with the developers\u2014they are
+    eager to make this adventure more exciting and seamless. Meanwhile, I will be
+    tinkering behind the scenes, making repairs and preparing surprises for our next
+    journey together. Until then, stay awesome!\n~ Cyril"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -984,7 +984,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.69055176, y: 0, z: 0.6496582, w: -1.2495956}
+  m_margin: {x: 0.6906128, y: 0, z: -0.6817322, w: 2.6699677}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

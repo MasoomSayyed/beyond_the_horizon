@@ -1,17 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void StarGame()
     {
         SceneManager.LoadScene("Story");
@@ -19,7 +13,8 @@ public class MainMenu : MonoBehaviour
 
     public void EndGame()
     {
-        SceneManager.LoadScene("ExitScene");
+        //Application.Quit();
+        SceneManager.LoadScene("EndScene");
     }
 
     public void Play()

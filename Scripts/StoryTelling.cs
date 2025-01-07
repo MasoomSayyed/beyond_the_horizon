@@ -9,7 +9,7 @@ public class StoryTelling : MonoBehaviour
 {
     private TextMeshProUGUI panelText;
     private string text;
-    private float typingSpeed = 0.05f;
+    [SerializeField] private float typingSpeed = 30f;
     private UnityEngine.UI.Button playButton;
     void Start()
     {
@@ -34,7 +34,7 @@ public class StoryTelling : MonoBehaviour
         foreach (char alphabet in text)
         {
             panelText.text += alphabet;
-            yield return new WaitForSeconds(typingSpeed);
+            yield return new WaitForSeconds(1 / typingSpeed);
         }
         playButton.gameObject.SetActive(true);
     }

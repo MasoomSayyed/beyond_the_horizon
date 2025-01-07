@@ -1,19 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private void Awake()
+    private GameObject soundSlider, soundEffectsSlider;
+    private Slider volumeSlider, volumeEffectsSlider;
+    private AudioSource[] audioSources;
+    void Start()
     {
-        if (FindObjectsByType<MainMenu>(FindObjectsSortMode.None).Length > 1)
+        soundSlider = GameObject.FindGameObjectWithTag("SoundSlider");
+        soundEffectsSlider = GameObject.FindGameObjectWithTag("SoundEffectsSlider");
+        if (soundSlider != null)
         {
-            Destroy(gameObject);
+            volumeSlider = soundSlider.GetComponent<Slider>();
+            volumeEffectsSlider = soundEffectsSlider.GetComponent<Slider>();
+            // Initializing the audio sources with the sliders
+            audioSources = GameObject.FindGameObjectWithTag("GameController").GetComponents<AudioSource>();
+            volumeSlider.value = audioSources[0].volume;
+            volumeEffectsSlider.value = audioSources[1].volume;
+            // Changing the volume
+            volumeSlider.onValueChanged.AddListener((value) => SetMusicVolume("Sound", value));
+            volumeEffectsSlider.onValueChanged.AddListener((value) => SetMusicVolume("SoundEffects", value));
         }
         else
         {
-            DontDestroyOnLoad(gameObject);
+            Debug.Log("Sound Slider Not Found");
+        }
+    }
+
+    public void SetMusicVolume(string musicType, float volume)
+    {
+        if (musicType == "Sound")
+        {
+            audioSources[0].volume = volume;
+        }
+        else
+        {
+            audioSources[1].volume = volume;
         }
     }
 }
