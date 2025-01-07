@@ -24,6 +24,21 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Test Area");
+        SceneManager.LoadScene("TutorialScene");
+    }
+
+    public void Settings()
+    {
+        SceneManager.LoadScene("Settings");
+    }
+
+    public void MenuScene()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void CreditsScene()
+    {
+        SceneManager.LoadScene("Credits");
     }
 }
