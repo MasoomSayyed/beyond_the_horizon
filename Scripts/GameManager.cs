@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public bool isStoryCompleted = false;
+    public bool isEndSceneCompleted = false;
     // Start is called before the first frame update
     private void Awake()
     {

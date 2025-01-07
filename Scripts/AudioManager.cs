@@ -18,8 +18,8 @@ public class AudioManager : MonoBehaviour
             volumeEffectsSlider = soundEffectsSlider.GetComponent<Slider>();
             // Initializing the audio sources with the sliders
             audioSources = GameObject.FindGameObjectWithTag("GameController").GetComponents<AudioSource>();
-            volumeSlider.value = audioSources[0].volume;
-            volumeEffectsSlider.value = audioSources[1].volume;
+            volumeSlider.value = audioSources[0].volume / 2;
+            volumeEffectsSlider.value = audioSources[1].volume / 2;
             // Changing the volume
             volumeSlider.onValueChanged.AddListener((value) => SetMusicVolume("Sound", value));
             volumeEffectsSlider.onValueChanged.AddListener((value) => SetMusicVolume("SoundEffects", value));
