@@ -29,6 +29,9 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
     public void SailingModeInputs()
     {
+        //makes the ship don't flip
+        transform.localScale = Vector3.one;
+
         playerRigidbody.mass = 1f;
         playerRigidbody.gravityScale = 1f;
 
@@ -79,7 +82,9 @@ public class MovementSystemDifferentModes : MonoBehaviour
         playerRigidbody.mass = 8.5f;
         playerRigidbody.gravityScale = 0.1f;
 
-        float speed = 1000f;
+
+
+        float speed = 1500f;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 moveDir = new Vector3(horizontal, vertical).normalized;
@@ -96,6 +101,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), Time.deltaTime * rotationSpeed);
 
         Vector3 localScale = Vector3.one;
+        localScale.x = 1f;
         if (angle > 90 || angle < -90)
         {
             localScale.y = -1f;

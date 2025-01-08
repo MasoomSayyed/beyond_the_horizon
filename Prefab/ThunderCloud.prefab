@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8271682340483620391}
   - component: {fileID: 8920156458647105601}
+  - component: {fileID: 6067472460106408601}
   m_Layer: 0
   m_Name: ThunderCloud
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3973410625821308607}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.314636, y: 11.607363, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -63,13 +64,26 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.27485326, y: -0.118853375}
   m_Size: {x: 7.939419, y: 3.4479694}
   m_Direction: 1
+--- !u!114 &6067472460106408601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3973410625821308607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb76c2c8a0510f440ac66e5e97934110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioThunderClip: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
 --- !u!1 &7468177246183830934
 GameObject:
   m_ObjectHideFlags: 0

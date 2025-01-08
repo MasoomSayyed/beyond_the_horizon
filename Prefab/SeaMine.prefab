@@ -136,3 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82d080c7f0bdbc346adcdeff6decc7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mineBlastAudio: {fileID: 8300000, guid: 1d74880bed4586644a16a79a2d9dc8af, type: 3}
