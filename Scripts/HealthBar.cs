@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
@@ -19,9 +20,38 @@ public class HealthBar : MonoBehaviour
         healthBarImage.fillAmount = currentHealth;
     }
 
-    public void TakeDamage(int Damage)
+    private void Update()
+    {
+        RestartScene();
+    }
+
+    public void TakeDamage(float Damage)
     {
         currentHealth -= Damage;
         healthBarImage.fillAmount = currentHealth / maxHealth;
+    }
+
+    public void DepleteHealth()
+    {
+        currentHealth -= 10f * Time.deltaTime;
+        healthBarImage.fillAmount = currentHealth / maxHealth;
+    }
+
+    /*private void RefillHealth()
+    {
+        if (currentHealth < 10)
+
+        {
+            currentHealth = maxHealth;
+            healthBarImage.fillAmount += currentHealth / maxHealth;
+        }
+    }*/
+
+    private void RestartScene()
+    {
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 }
