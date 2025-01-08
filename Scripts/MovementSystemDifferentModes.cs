@@ -18,6 +18,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
     private bool isGliding = false;
     private bool canPropel = false;
+    private bool canSubmarine = false;
 
 
     private void Awake()
@@ -69,7 +70,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
     public void Propel()
     {
-        float propelForce = 500f;
+        float propelForce = 300f;
         playerRigidbody.AddForce(Vector3.up * propelForce);
     }
 
@@ -123,6 +124,23 @@ public class MovementSystemDifferentModes : MonoBehaviour
         return canPropel;
     }
 
+    public bool IsTouchingWater()
+    {
+        /*  WaterWave waterWave = GetComponent<WaterWave>();
+          if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 5f))
+          {
+              if (hit.transform != null && hit.transform.tag == waterWave.gameObject.tag)
+              {
+                  canSubmarine = true;
+              }
+              else
+              {
+                  canSubmarine = false;
+              }
+          }*/
+        return canSubmarine;
+
+    }
 
     public void Dash()
     {
@@ -146,5 +164,17 @@ public class MovementSystemDifferentModes : MonoBehaviour
         canPropel = true;
         yield return new WaitForSeconds(dashPropelWaitTimer);
         canPropel = false;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            canSubmarine = true;
+        }
+        else
+        {
+            canSubmarine = false;
+        }
     }
 }

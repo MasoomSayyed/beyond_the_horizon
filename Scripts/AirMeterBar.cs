@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class AirMeterBar : MonoBehaviour
 {
+    public static AirMeterBar Instance;
+
+    private bool isRefilling = false;
     private void Awake()
     {
+        Instance = this;
         airMeterImage.fillAmount = 1;
     }
 
@@ -20,12 +24,13 @@ public class AirMeterBar : MonoBehaviour
         }
         else
         {
-            airMeterImage.fillAmount += Time.deltaTime;
+            RefillAirMeter();
         }
     }
 
     public void RefillAirMeter()
     {
+        isRefilling = true;
         airMeterImage.fillAmount += .1f * Time.deltaTime;
     }
 }
