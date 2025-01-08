@@ -49,7 +49,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
     public void JumpAndGlide()
     {
-        float jumpForce = 300f;
+        float jumpForce = 50f;
         playerRigidbody.AddForce(Vector3.up * jumpForce);
     }
 
@@ -69,7 +69,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
     public void Propel()
     {
-        float propelForce = 1000f;
+        float propelForce = 500f;
         playerRigidbody.AddForce(Vector3.up * propelForce);
     }
 

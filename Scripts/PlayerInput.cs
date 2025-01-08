@@ -40,12 +40,12 @@ public class PlayerInput : MonoBehaviour
 
     private void ModeSwitch()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && shipMode != ShipModes.Submarine)
-        {
-            shipMode = ShipModes.Sailing;
-        }
+        /* if (Input.GetKeyDown(KeyCode.Q) && shipMode != ShipModes.Submarine)
+         {
+             shipMode = ShipModes.Sailing;
+         }*/
 
-        if (Input.GetKeyDown(KeyCode.Q) && shipMode == ShipModes.Sailing)
+        if (Input.GetKey(KeyCode.S) && shipMode == ShipModes.Sailing)
         {
             shipMode = ShipModes.Submarine;
         }
