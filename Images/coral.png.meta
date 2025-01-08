@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: c12c8a3db40aaac43b5f935c59e18858
+guid: 117971c996e0f0e46b3d501329aad53f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5093261971072243400
-    second: Thundercloud_0
+      213: 3273187744099624924
+    second: coral_0
+  - first:
+      213: -8966051150134209665
+    second: coral_1
+  - first:
+      213: -6655879196108183687
+    second: coral_2
+  - first:
+      213: -8754541895643686218
+    second: coral_3
+  - first:
+      213: 2219660154900960634
+    second: coral_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,19 +109,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Thundercloud_0
+      name: coral_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 30
-        width: 500
-        height: 440
+        x: 17
+        y: 11
+        width: 283
+        height: 296
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +139,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 839ab3af8391159b0800000000000000
-      internalID: -5093261971072243400
+      spriteID: cd7683249e2bc6d20800000000000000
+      internalID: 3273187744099624924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coral_1
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 34
+        width: 245
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f73944eabff229380800000000000000
+      internalID: -8966051150134209665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coral_2
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 21
+        width: 265
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9772f00b22191a3a0800000000000000
+      internalID: -6655879196108183687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coral_3
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 22
+        width: 304
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ba12ea878e918680800000000000000
+      internalID: -8754541895643686218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coral_4
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 35
+        width: 286
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a75d5fe8621ddce10800000000000000
+      internalID: 2219660154900960634
       vertices: []
       indices: 
       edges: []
@@ -156,8 +239,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Thundercloud_0: -5093261971072243400
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
