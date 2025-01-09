@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TriggerToSailing : MonoBehaviour
@@ -15,7 +16,7 @@ public class TriggerToSailing : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Sailing") && playerInput.shipMode == PlayerInput.ShipModes.Submarine)
         {
@@ -28,6 +29,7 @@ public class TriggerToSailing : MonoBehaviour
         }
 
     }
+
 
     public bool IsJumping()
     {

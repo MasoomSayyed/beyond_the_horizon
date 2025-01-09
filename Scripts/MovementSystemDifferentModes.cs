@@ -18,6 +18,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
     private bool isGliding = false;
     private bool canPropel = false;
+    private bool canSubmarine = false;
 
 
     private void Awake()
@@ -28,6 +29,9 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
     public void SailingModeInputs()
     {
+        //makes the ship don't flip
+        transform.localScale = Vector3.one;
+
         playerRigidbody.mass = 1f;
         playerRigidbody.gravityScale = 1f;
 
@@ -69,7 +73,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
 
     public void Propel()
     {
-        float propelForce = 500f;
+        float propelForce = 300f;
         playerRigidbody.AddForce(Vector3.up * propelForce);
     }
 
@@ -78,7 +82,9 @@ public class MovementSystemDifferentModes : MonoBehaviour
         playerRigidbody.mass = 8.5f;
         playerRigidbody.gravityScale = 0.1f;
 
-        float speed = 1000f;
+
+
+        float speed = 1500f;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 moveDir = new Vector3(horizontal, vertical).normalized;
@@ -95,6 +101,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), Time.deltaTime * rotationSpeed);
 
         Vector3 localScale = Vector3.one;
+        localScale.x = 1f;
         if (angle > 90 || angle < -90)
         {
             localScale.y = -1f;
@@ -123,6 +130,23 @@ public class MovementSystemDifferentModes : MonoBehaviour
         return canPropel;
     }
 
+    public bool IsTouchingWater()
+    {
+        /*  WaterWave waterWave = GetComponent<WaterWave>();
+          if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 5f))
+          {
+              if (hit.transform != null && hit.transform.tag == waterWave.gameObject.tag)
+              {
+                  canSubmarine = true;
+              }
+              else
+              {
+                  canSubmarine = false;
+              }
+          }*/
+        return canSubmarine;
+
+    }
 
     public void Dash()
     {
@@ -146,5 +170,17 @@ public class MovementSystemDifferentModes : MonoBehaviour
         canPropel = true;
         yield return new WaitForSeconds(dashPropelWaitTimer);
         canPropel = false;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            canSubmarine = true;
+        }
+        else
+        {
+            canSubmarine = false;
+        }
     }
 }
