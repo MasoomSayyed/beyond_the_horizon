@@ -8,11 +8,12 @@ public class StaminaBar : MonoBehaviour
     public static StaminaBar Instance;
 
     private float maxStamina = 100f;
-    private float staminaToDeplete = 40f;
-    private float staminaRecoveryRate = 10f;
+    private float staminaRecoveryRate = 2f;
     public Image staminaBar;
 
     private float currentStamina;
+
+    private bool isStaminaAvailaible = true;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class StaminaBar : MonoBehaviour
         return currentStamina > 30f;
     }
 
-    public void DepleteStamina()
+    public void DepleteStamina(float staminaToDeplete)
     {
         currentStamina -= staminaToDeplete;
         currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
@@ -56,5 +57,18 @@ public class StaminaBar : MonoBehaviour
     private void UpdateStaminaBar()
     {
         staminaBar.fillAmount = currentStamina / maxStamina;
+    }
+
+    public bool IsStaminaAvailaible()
+    {
+        if (currentStamina <= 10)
+        {
+            isStaminaAvailaible = true;
+        }
+        else
+        {
+            isStaminaAvailaible = false;
+        }
+        return isStaminaAvailaible;
     }
 }

@@ -27,6 +27,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
+    //The inputs and settings when on above the water
     public void SailingModeInputs()
     {
         //makes the ship don't flip
@@ -51,40 +52,41 @@ public class MovementSystemDifferentModes : MonoBehaviour
         Glide();
     }
 
-    public void JumpAndGlide()
-    {
-        float jumpForce = 50f;
-        playerRigidbody.AddForce(Vector3.up * jumpForce);
-    }
-
+    // to handle the code for gliding reducing gravity
     private void Glide()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && StaminaBar.Instance.IsStaminaAvailaible() != true && !IsTouchingWater())
         {
             isGliding = true;
             playerRigidbody.drag = .3f;
             playerRigidbody.gravityScale = .1f;
+            StaminaBar.Instance.DepleteStamina(.3f);
         }
+
         else
         {
             isGliding = false;
         }
+
+
     }
 
+    // this handels the boost given to player when coming out of water by dashing
     public void Propel()
     {
         float propelForce = 300f;
         playerRigidbody.AddForce(Vector3.up * propelForce);
     }
 
+    // these handles inputs when underwater
     public void SubmarineModeInputs()
     {
-        playerRigidbody.mass = 8.5f;
+        playerRigidbody.mass = 5f;
         playerRigidbody.gravityScale = 0.1f;
+        //makes the ship don't flip
+        transform.localScale = Vector3.one;
 
-
-
-        float speed = 1500f;
+        float speed = 850f;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 moveDir = new Vector3(horizontal, vertical).normalized;
@@ -116,6 +118,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
         //transform.right = Vector3.Lerp(transform.right, lastMoveDirSub, rotationSpeed * Time.deltaTime);
     }
 
+
     public Vector3 GetEulerAngle()
     {
         return transform.eulerAngles;
@@ -130,30 +133,15 @@ public class MovementSystemDifferentModes : MonoBehaviour
         return canPropel;
     }
 
-    public bool IsTouchingWater()
-    {
-        /*  WaterWave waterWave = GetComponent<WaterWave>();
-          if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 5f))
-          {
-              if (hit.transform != null && hit.transform.tag == waterWave.gameObject.tag)
-              {
-                  canSubmarine = true;
-              }
-              else
-              {
-                  canSubmarine = false;
-              }
-          }*/
-        return canSubmarine;
-
-    }
-
+    // this is to implement the dash
     public void Dash()
     {
-        float dashForce = 50f;
+        float dashForce = 25f;
         playerRigidbody.AddForce(lastMoveDirSub * dashForce, ForceMode2D.Impulse);
     }
 
+    // it handles the duration to which player can dash out of water and can jump
+    // as player is not allowed to be boosted if not dashing while coming out of water
     public void DashPropelTimer()
     {
         if (dashPropelTimerCoroutine != null)
@@ -172,6 +160,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
         canPropel = false;
     }
 
+    // this returns if player is touching the water so it cannot enter in sub mode in the air
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Water"))
@@ -183,4 +172,9 @@ public class MovementSystemDifferentModes : MonoBehaviour
             canSubmarine = false;
         }
     }
+    public bool IsTouchingWater()
+    {
+        return canSubmarine;
+    }
+
 }

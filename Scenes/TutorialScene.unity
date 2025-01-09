@@ -42081,12 +42081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStoryCompleted: 0
   isEndSceneCompleted: 0
-  gameOverScreen: {fileID: 0}
-  gameOverScoreText: {fileID: 0}
-  gameOverHighScoreText: {fileID: 0}
   pauseScreen: {fileID: 1686551528}
-  pauseScoreText: {fileID: 0}
-  pauseHighScoreText: {fileID: 0}
 --- !u!4 &2024484831
 Transform:
   m_ObjectHideFlags: 0
