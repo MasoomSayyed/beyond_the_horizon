@@ -32,7 +32,7 @@ public class PlayerInput : MonoBehaviour
             MovementSystemDifferentModes.Instance.DashPropelTimer();
             if (StaminaBar.Instance.IsSprintingAllowed())
             {
-                StaminaBar.Instance.DepleteStamina();
+                StaminaBar.Instance.DepleteStamina(40f);
                 MovementSystemDifferentModes.Instance.Dash();
             }
         }
@@ -45,7 +45,7 @@ public class PlayerInput : MonoBehaviour
              shipMode = ShipModes.Sailing;
          }*/
 
-        if (Input.GetKey(KeyCode.S) && shipMode == ShipModes.Sailing && MovementSystemDifferentModes.Instance.IsTouchingWater())
+        if (MovementSystemDifferentModes.Instance.IsTouchingWater() && Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             shipMode = ShipModes.Submarine;
         }
