@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 825bf88a842e52b47b8234c31e1daa2f
+guid: 9e17d0925de199a44a1e90919ec5d4e0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 986808061072016266
-    second: pausetoggle_0
+      213: -3811770781721116617
+    second: Screenshot_20250108_215413_com.adsk.sketchbook_edit_86841041073206_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pausetoggle_0
+      name: Screenshot_20250108_215413_com.adsk.sketchbook_edit_86841041073206_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 55
-        height: 55
+        width: 1062
+        height: 1007
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a8380b504b8d1bd00800000000000000
-      internalID: 986808061072016266
+      spriteID: 730cc4e6baed91bc0800000000000000
+      internalID: -3811770781721116617
       vertices: []
       indices: 
       edges: []
@@ -156,8 +156,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      pausetoggle_0: 986808061072016266
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
