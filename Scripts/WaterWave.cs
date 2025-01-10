@@ -22,9 +22,31 @@ public class WaterWave : MonoBehaviour
         spriteShapeController = GetComponent<SpriteShapeController>();
         if (spriteShapeController != null)
         {
+            Vector3 worldPosition = spriteShapeController.transform.position;
             spline = spriteShapeController.spline;
+            // Convert the coordinate system for every spline point: Local -> World
+            for (int i = 0; i < spline.GetPointCount(); i++)
+            {
+                Vector3 worldPoint = spriteShapeController.transform.TransformPoint(spline.GetPosition(i));
+                spline.SetPosition(i, worldPoint);
+            }
+            for (int i = 0; i < spline.GetPointCount(); i++)
+            {
+                Vector3 localPoint = spline.GetPosition(i);
+                localPoint.x *= 2f/gameObject.transform.localScale.x;
+                localPoint.y *= 1/gameObject.transform.localScale.y;
+                localPoint.y += 1f;
+                spriteShapeController.spline.SetPosition(i, localPoint);
+            }
             // Insert the number of numSplinePoints between the second and third spline points
             var xDiff = Math.Abs(spline.GetPosition(2).x - spline.GetPosition(1).x);
+            var yDiff = Math.Abs(spline.GetPosition(1).y - spline.GetPosition(0).y);
+            Debug.Log("Width: " + xDiff);
+            Debug.Log("Height: " + yDiff);
+            Debug.Log(spline.GetPosition(0));
+            Debug.Log(spline.GetPosition(1));
+            Debug.Log(spline.GetPosition(2));
+            Debug.Log(spline.GetPosition(3));
             var xPos = spline.GetPosition(1).x;
             for (int i = 1; i <= numSplinePoints; i++)
             {
@@ -38,6 +60,11 @@ public class WaterWave : MonoBehaviour
             {
                 waterSprings.Add(new WaterSpring(spline.GetPosition(i + 2).y, spline.GetPosition(i + 2).y, stiffness, damping));
             }
+            /*for (int i = 0; i < spline.GetPointCount(); i++)
+            {
+                Vector3 adjustedWorldPoint = spriteShapeController.transform.InverseTransformPoint(spline.GetPosition(i));
+                spline.SetPosition(i, adjustedWorldPoint);
+            }*/
         }
         else
         {
