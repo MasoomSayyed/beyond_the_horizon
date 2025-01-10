@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9e17d0925de199a44a1e90919ec5d4e0
+guid: 1a6d3966ea13b324cb00e77a711283a5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3811770781721116617
-    second: Screenshot_20250108_215413_com.adsk.sketchbook_edit_86841041073206_0
+      213: -3395730515928955655
+    second: Cloud 5_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -56,7 +56,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -97,23 +97,10 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 12
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -126,22 +113,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Screenshot_20250108_215413_com.adsk.sketchbook_edit_86841041073206_0
+      name: Cloud 5_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1062
-        height: 1007
+        width: 86
+        height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 730cc4e6baed91bc0800000000000000
-      internalID: -3811770781721116617
+      spriteID: 9f4c91d4611ffd0d0800000000000000
+      internalID: -3395730515928955655
       vertices: []
       indices: 
       edges: []
@@ -149,15 +136,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Screenshot_20250108_215413_com.adsk.sketchbook_edit_86841041073206_0: -3811770781721116617
+      Cloud 5_0: -3395730515928955655
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
