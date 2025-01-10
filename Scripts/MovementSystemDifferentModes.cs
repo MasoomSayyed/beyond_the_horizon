@@ -58,7 +58,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && StaminaBar.Instance.IsStaminaAvailaible() != true && !IsTouchingWater())
         {
             isGliding = true;
-            playerRigidbody.drag = .3f;
+            playerRigidbody.linearDamping = .3f;
             playerRigidbody.gravityScale = .1f;
             StaminaBar.Instance.DepleteStamina(.6f);
         }
