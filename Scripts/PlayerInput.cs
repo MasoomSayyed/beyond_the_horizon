@@ -31,8 +31,9 @@ public class PlayerInput : MonoBehaviour
         {
             MovementSystemDifferentModes.Instance.DashPropelTimer();
             if (StaminaBar.Instance.IsSprintingAllowed())
+                //decreased dash stamina depletion -- branden
             {
-                StaminaBar.Instance.DepleteStamina(40f);
+                StaminaBar.Instance.DepleteStamina(10f);
                 MovementSystemDifferentModes.Instance.Dash();
             }
         }
@@ -62,6 +63,7 @@ public class PlayerInput : MonoBehaviour
                 // Debug.Log("Siwtched to Submarine mode !");
                 MovementSystemDifferentModes.Instance.SubmarineModeInputs();
                 break;
+            
         }
     }
 

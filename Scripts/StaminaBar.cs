@@ -8,7 +8,8 @@ public class StaminaBar : MonoBehaviour
     public static StaminaBar Instance;
 
     private float maxStamina = 100f;
-    private float staminaRecoveryRate = 2f;
+    //I increased the stamina recovery rate -- Branden
+    private float staminaRecoveryRate = 6f;
     public Image staminaBar;
 
     private float currentStamina;
