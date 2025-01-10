@@ -30,6 +30,12 @@ public class HealthBar : MonoBehaviour
         currentHealth -= Damage;
         healthBarImage.fillAmount = currentHealth / maxHealth;
     }
+    public void RestoreHealth(float healAmt)
+    {
+        currentHealth += healAmt;
+        healthBarImage.fillAmount = currentHealth / maxHealth;
+    }
+
 
     public void DepleteHealth()
     {

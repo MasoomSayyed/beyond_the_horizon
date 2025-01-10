@@ -13,6 +13,11 @@ public class WaterWave : MonoBehaviour
     [SerializeField] public float stiffness = 0.1f;
     [SerializeField] public float damping = 0.1f;
     [SerializeField] public float force = -0.25f;
+    [SerializeField] private float volume;
+
+    //these are for audio created by dbartish
+    [SerializeField] private AudioClip splashSound;
+
     private List<WaterSpring> waterSprings;
     private SpriteShapeController spriteShapeController;
     private UnityEngine.U2D.Spline spline;
@@ -134,17 +139,21 @@ public class WaterWave : MonoBehaviour
                 {
                     CreateSplash(splineContactIndices[i], force);
                 }
+
+
             }
         }
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        AudioSource.PlayClipAtPoint(splashSound, Camera.main.transform.position, volume);
         PlayerTrigger(collider, force);
         TriggerToSailing.Instance.SetIsJumpingFalse();
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
+        AudioSource.PlayClipAtPoint(splashSound, Camera.main.transform.position, volume);
         PlayerTrigger(collider, -force);
     }
 }
