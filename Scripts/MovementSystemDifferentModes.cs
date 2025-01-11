@@ -60,7 +60,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
             isGliding = true;
             playerRigidbody.drag = .3f;
             playerRigidbody.gravityScale = .1f;
-            StaminaBar.Instance.DepleteStamina(.6f);
+            StaminaBar.Instance.DepleteStamina(.2f);
         }
 
         else
@@ -86,7 +86,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
         //makes the ship don't flip
         transform.localScale = Vector3.one;
 
-        float speed = 850f;
+        float speed = 1200f;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 moveDir = new Vector3(horizontal, vertical).normalized;
