@@ -8,45 +8,37 @@ using UnityEngine.U2D;
 
 public class WaterWave : MonoBehaviour
 {
+    private int numSplinePoints = 1; //1 spline points for X scale of 1
     [SerializeField] private float spread = 0.5f;
-    [SerializeField] public int numSplinePoints = 31;
     [SerializeField] public float stiffness = 0.1f;
     [SerializeField] public float damping = 0.1f;
-    [SerializeField] public float force = -0.25f;
+    private float force = -0.25f; // -1/0.25 for Y scale of 1
     private List<WaterSpring> waterSprings;
     private SpriteShapeController spriteShapeController;
     private UnityEngine.U2D.Spline spline;
 
     private void Start()
     {
+        numSplinePoints = 1 * (int)gameObject.transform.localScale.x;
+        force = -0.25f / gameObject.transform.localScale.y;
         spriteShapeController = GetComponent<SpriteShapeController>();
         if (spriteShapeController != null)
         {
-            Vector3 worldPosition = spriteShapeController.transform.position;
             spline = spriteShapeController.spline;
             // Convert the coordinate system for every spline point: Local -> World
-            for (int i = 0; i < spline.GetPointCount(); i++)
+            /*for (int i = 0; i < spline.GetPointCount(); i++)
             {
                 Vector3 worldPoint = spriteShapeController.transform.TransformPoint(spline.GetPosition(i));
-                spline.SetPosition(i, worldPoint);
+                spline.SetPosition(i, new Vector3(worldPoint.x, spline.GetPosition(i).y, 0));
             }
             for (int i = 0; i < spline.GetPointCount(); i++)
             {
                 Vector3 localPoint = spline.GetPosition(i);
-                localPoint.x *= 2f/gameObject.transform.localScale.x;
-                localPoint.y *= 1/gameObject.transform.localScale.y;
-                localPoint.y += 1f;
+                localPoint.x *= 1f/gameObject.transform.localScale.x;
                 spriteShapeController.spline.SetPosition(i, localPoint);
-            }
+            }*/
             // Insert the number of numSplinePoints between the second and third spline points
             var xDiff = Math.Abs(spline.GetPosition(2).x - spline.GetPosition(1).x);
-            var yDiff = Math.Abs(spline.GetPosition(1).y - spline.GetPosition(0).y);
-            Debug.Log("Width: " + xDiff);
-            Debug.Log("Height: " + yDiff);
-            Debug.Log(spline.GetPosition(0));
-            Debug.Log(spline.GetPosition(1));
-            Debug.Log(spline.GetPosition(2));
-            Debug.Log(spline.GetPosition(3));
             var xPos = spline.GetPosition(1).x;
             for (int i = 1; i <= numSplinePoints; i++)
             {
@@ -60,11 +52,7 @@ public class WaterWave : MonoBehaviour
             {
                 waterSprings.Add(new WaterSpring(spline.GetPosition(i + 2).y, spline.GetPosition(i + 2).y, stiffness, damping));
             }
-            /*for (int i = 0; i < spline.GetPointCount(); i++)
-            {
-                Vector3 adjustedWorldPoint = spriteShapeController.transform.InverseTransformPoint(spline.GetPosition(i));
-                spline.SetPosition(i, adjustedWorldPoint);
-            }*/
+            Debug.Log(numSplinePoints);
         }
         else
         {
