@@ -16,6 +16,9 @@ public class WaterWave : MonoBehaviour
     private List<WaterSpring> waterSprings;
     private SpriteShapeController spriteShapeController;
     private UnityEngine.U2D.Spline spline;
+    [SerializeField] private float volume;
+    //these are for audio created by dbartish
+    [SerializeField] private AudioClip splashSound;
 
     private void Start()
     {
@@ -52,7 +55,6 @@ public class WaterWave : MonoBehaviour
             {
                 waterSprings.Add(new WaterSpring(spline.GetPosition(i + 2).y, spline.GetPosition(i + 2).y, stiffness, damping));
             }
-            Debug.Log(numSplinePoints);
         }
         else
         {
