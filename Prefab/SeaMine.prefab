@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1169000864034674855}
   - component: {fileID: 3312665221779333606}
   - component: {fileID: 1302130832108836754}
-  - component: {fileID: 7674385221039936288}
   m_Layer: 0
   m_Name: SeaMine
   m_TagString: SeaMine
@@ -137,27 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82d080c7f0bdbc346adcdeff6decc7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastAnim: {fileID: 7674385221039936288}
+  explosionPrefab: {fileID: 2594175404802942411, guid: 6f524d629de10f8478bb66d3ab3c5fde, type: 3}
   mineBlastAudio: {fileID: 8300000, guid: 1d74880bed4586644a16a79a2d9dc8af, type: 3}
---- !u!95 &7674385221039936288
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2106946082337364119}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b3b54fd4c7771d64c9ea8c62e90a102d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

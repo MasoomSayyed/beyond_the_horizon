@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SeaMine : MonoBehaviour
 {
-    private Animator blastAnim;
+    [SerializeField] private GameObject explosionPrefab;
 
     private int damage = 10;
     [SerializeField] private AudioClip mineBlastAudio;
@@ -14,7 +14,7 @@ public class SeaMine : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(mineBlastAudio, transform.position);
             HealthBar.Instance.TakeDamage(damage);
-            blastAnim.Play("BlastUnderwater");
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
