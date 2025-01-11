@@ -60,7 +60,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
             isGliding = true;
             playerRigidbody.drag = .3f;
             playerRigidbody.gravityScale = .1f;
-            StaminaBar.Instance.DepleteStamina(.2f);
+            StaminaBar.Instance.DepleteStamina(.6f);
         }
 
         else

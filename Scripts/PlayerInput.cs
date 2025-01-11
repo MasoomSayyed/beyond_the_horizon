@@ -14,6 +14,8 @@ public class PlayerInput : MonoBehaviour
     }
 
     public ShipModes shipMode;
+   
+
 
     private void Awake()
     {
@@ -31,12 +33,15 @@ public class PlayerInput : MonoBehaviour
         {
             MovementSystemDifferentModes.Instance.DashPropelTimer();
             if (StaminaBar.Instance.IsSprintingAllowed())
-                //decreased dash stamina depletion -- branden
+            //decreased dash stamina depletion -- branden
             {
                 StaminaBar.Instance.DepleteStamina(10f);
                 MovementSystemDifferentModes.Instance.Dash();
             }
         }
+
+     
+
     }
 
     private void ModeSwitch()
@@ -63,8 +68,13 @@ public class PlayerInput : MonoBehaviour
                 // Debug.Log("Siwtched to Submarine mode !");
                 MovementSystemDifferentModes.Instance.SubmarineModeInputs();
                 break;
-            
+
         }
     }
 
+    public ShipModes GetShipMode()
+    {
+
+        return shipMode;
+    }
 }

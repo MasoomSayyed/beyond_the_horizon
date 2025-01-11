@@ -149,17 +149,21 @@ public class WaterWave : MonoBehaviour
                 {
                     CreateSplash(splineContactIndices[i], force);
                 }
+
+
             }
         }
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        AudioSource.PlayClipAtPoint(splashSound, Camera.main.transform.position, volume);
         PlayerTrigger(collider, force);
         TriggerToSailing.Instance.SetIsJumpingFalse();
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
+        AudioSource.PlayClipAtPoint(splashSound, Camera.main.transform.position, volume);
         PlayerTrigger(collider, -force);
     }
 }
