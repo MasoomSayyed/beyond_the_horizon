@@ -45291,12 +45291,24 @@ PrefabInstance:
       value: AirRecharger (1)
       objectReference: {fileID: 0}
     - target: {fileID: 9189445650970807391, guid: c8e01bed31cac0a4ba34f839df84e27b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7355045
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189445650970807391, guid: c8e01bed31cac0a4ba34f839df84e27b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7355045
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189445650970807391, guid: c8e01bed31cac0a4ba34f839df84e27b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7355045
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189445650970807391, guid: c8e01bed31cac0a4ba34f839df84e27b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63.25
+      value: 62.87
       objectReference: {fileID: 0}
     - target: {fileID: 9189445650970807391, guid: c8e01bed31cac0a4ba34f839df84e27b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.84
+      value: -15.72
       objectReference: {fileID: 0}
     - target: {fileID: 9189445650970807391, guid: c8e01bed31cac0a4ba34f839df84e27b, type: 3}
       propertyPath: m_LocalPosition.z
