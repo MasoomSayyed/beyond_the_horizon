@@ -47,9 +47,12 @@ public class Fishes : MonoBehaviour
             this.numFishes = numFishes;
             fishesInHoarde = new CapsuleCollider2D[numFishes];
             hoardeSpeed = new float[numFishes];
+
+            float minSpeed = .1f;
+            float maxSpeed = .4f;
             for (int i = 0; i < numFishes; i++)
             {
-                hoardeSpeed[i] = Random.Range(0.001f, 0.002f);
+                hoardeSpeed[i] = Random.Range(minSpeed * Time.deltaTime, maxSpeed * Time.deltaTime);
                 if (Mathf.Round(Random.Range(0, 1)) > 0)
                 {
                     hoardeSpeed[i] *= -1; // -ve Velocity for left and +ve velocity for right
@@ -57,8 +60,8 @@ public class Fishes : MonoBehaviour
             }
         }
         public void SpawnFishes()
-        {   
-            
+        {
+
             for (int i = 0; i < numFishes; i++)
             {
                 CapsuleCollider2D newFish = Instantiate(originalFish);
