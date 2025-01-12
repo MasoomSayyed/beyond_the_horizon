@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d9c90a8af849a524e9f09e401835ca54
+guid: 8724662ec602ff641b8851f8d7144e7e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7443756053782179069
-    second: background_0
+      213: 3249355680233996487
+    second: Screenshot_20250108_215413_com.adsk.sketchbook_edit_86841041073206 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background_0
+      name: Screenshot_20250108_215413_com.adsk.sketchbook_edit_86841041073206 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 288
-        height: 256
+        width: 1062
+        height: 1007
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 30356abce4772b890800000000000000
-      internalID: -7443756053782179069
+      spriteID: 7c0ce3d76c7081d20800000000000000
+      internalID: 3249355680233996487
       vertices: []
       indices: 
       edges: []
@@ -143,12 +143,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-<<<<<<< Updated upstream
     nameFileIdTable: {}
-=======
-    nameFileIdTable:
-      background_0: -7443756053782179069
->>>>>>> Stashed changes
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -60,7 +60,11 @@ public class MovementSystemDifferentModes : MonoBehaviour
             isGliding = true;
             playerRigidbody.drag = .3f;
             playerRigidbody.gravityScale = .1f;
+<<<<<<< Updated upstream
             StaminaBar.Instance.DepleteStamina(.2f);
+=======
+            StaminaBar.Instance.DepleteStamina(.3f);
+>>>>>>> Stashed changes
         }
 
         else
@@ -76,6 +80,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
     {
         float propelForce = 300f;
         playerRigidbody.AddForce(Vector3.up * propelForce);
+        StaminaBar.Instance.DepleteStamina(-20f);
     }
 
     // these handles inputs when underwater
@@ -86,7 +91,11 @@ public class MovementSystemDifferentModes : MonoBehaviour
         //makes the ship don't flip
         transform.localScale = Vector3.one;
 
+<<<<<<< Updated upstream
         float speed = 1200f;
+=======
+        float speed = 1100f;
+>>>>>>> Stashed changes
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 moveDir = new Vector3(horizontal, vertical).normalized;

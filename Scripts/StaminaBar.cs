@@ -38,7 +38,7 @@ public class StaminaBar : MonoBehaviour
     public bool IsSprintingAllowed()
     {
 
-        return currentStamina > 30f;
+        return currentStamina > 9f;
     }
 
     public void DepleteStamina(float staminaToDeplete)
