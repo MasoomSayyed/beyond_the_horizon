@@ -19,9 +19,16 @@ public class WaterWave : MonoBehaviour
     [SerializeField] private float volume;
     //these are for audio created by dbartish
     [SerializeField] private AudioClip splashSound;
+    [SerializeField] private AudioSource splashSource;
+
 
     private void Start()
     {
+        if (splashSound == null)
+        {
+            Debug.Log("null");
+        }
+
         numSplinePoints = 1 * (int)gameObject.transform.localScale.x;
         force = -0.25f / gameObject.transform.localScale.y;
         spriteShapeController = GetComponent<SpriteShapeController>();
@@ -158,14 +165,15 @@ public class WaterWave : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        AudioSource.PlayClipAtPoint(splashSound, Camera.main.transform.position, volume);
+        //  AudioSource.PlayClipAtPoint(splashSound, collider.transform.position, volume);
+        Debug.Log("entered");
         PlayerTrigger(collider, force);
         TriggerToSailing.Instance.SetIsJumpingFalse();
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        AudioSource.PlayClipAtPoint(splashSound, Camera.main.transform.position, volume);
+        // AudioSource.PlayClipAtPoint(splashSound, collider.transform.position, volume);
         PlayerTrigger(collider, -force);
     }
 }

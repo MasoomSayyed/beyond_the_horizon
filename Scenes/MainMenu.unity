@@ -1803,6 +1803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStoryCompleted: 0
   isEndSceneCompleted: 0
+  pauseScreen: {fileID: 0}
 --- !u!82 &1713073873
 AudioSource:
   m_ObjectHideFlags: 0

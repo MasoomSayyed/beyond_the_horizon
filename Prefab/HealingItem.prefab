@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -2978653956524333172, guid: f6ecf060b064c2f47b879191ec02094c, type: 3}
   m_Color: {r: 0, g: 0.764151, b: 0.11910254, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5858809229658356841}
   - component: {fileID: 314299455188843032}
-  - component: {fileID: 7648578082181170970}
+  - component: {fileID: 4156605432129314788}
   m_Layer: 0
   m_Name: HealingItem
   m_TagString: Untagged
@@ -114,7 +114,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.86232954, y: 0.86232954, z: 0.86232954}
+  m_LocalScale: {x: 26.022518, y: 26.022518, z: 26.022518}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5534205676249080006}
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healItemAudio: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
---- !u!58 &7648578082181170970
+--- !u!58 &4156605432129314788
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,4 +168,4 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.020898225

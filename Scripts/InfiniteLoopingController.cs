@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class InfiniteLoopingController : MonoBehaviour
 {
+   
 
-    Vector2 screenBound;
+    /*Vector2 screenBound;
     BoundboxGenerator[] boundBoxes;
 
     void Start()
@@ -39,5 +40,7 @@ public class InfiniteLoopingController : MonoBehaviour
                 lastChild.transform.position = new Vector3(firstChild.transform.position.x - halfObjectWidth * 2, lastChild.transform.position.y, lastChild.transform.position.z);
             }
         }
-    }
+    }*/
+
+   
 }
