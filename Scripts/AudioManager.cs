@@ -9,7 +9,6 @@ public class AudioManager : MonoBehaviour
     private Slider volumeSlider, volumeEffectsSlider;
     private AudioSource[] audioSources;
 
-
     void Start()
     {
         soundSlider = GameObject.FindGameObjectWithTag("SoundSlider");
@@ -32,7 +31,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-
     public void SetMusicVolume(string musicType, float volume)
     {
         if (musicType == "Sound")
@@ -42,6 +40,12 @@ public class AudioManager : MonoBehaviour
         else
         {
             audioSources[1].volume = volume;
+            GameManager gameManager = FindFirstObjectByType<GameManager>();
+            if (gameManager != null)
+            {
+                gameManager.soundEffectsVolume = volume;
+                Debug.Log(gameManager.soundEffectsVolume);
+            }
         }
     }
 }

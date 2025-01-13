@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class WaterWaveSplashSound : MonoBehaviour
 {
-    private float damage = 1f;
     [SerializeField] private AudioClip audioSplashClip;
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+    {   
+        GameManager[] gameManager = FindObjectsByType<GameManager>(FindObjectsSortMode.None);
+        Debug.Log(gameManager.Length);
+        if (collision.gameObject.tag == "Player" )
         {
-            AudioSource.PlayClipAtPoint(audioSplashClip, transform.position);
+            if (gameManager != null)
+            {
+                AudioSource.PlayClipAtPoint(audioSplashClip, transform.position, gameManager[0].soundEffectsVolume);
+            }
+            else
+            {
+                AudioSource.PlayClipAtPoint(audioSplashClip, transform.position);
+            }
         }
     }
 
@@ -19,9 +27,10 @@ public class WaterWaveSplashSound : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        if (collision.gameObject.tag == "Player" && gameManager != null)
         {
-            AudioSource.PlayClipAtPoint(audioSplashClip, transform.position);
+            //AudioSource.PlayClipAtPoint(audioSplashClip, transform.position);
         }
     }
 }

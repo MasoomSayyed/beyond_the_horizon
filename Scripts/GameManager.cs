@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     //Pause Screen
     public GameObject pauseScreen;
+    public float soundEffectsVolume; // SoundEffects volume
 
 
     private void Awake()
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
         //freeze screen and display pause screen
         Time.timeScale = 0;
         pauseScreen.SetActive(true);
-        Debug.Log("working");
+        Debug.Log("Paused");
     }
 
     public void ResumeGame()
