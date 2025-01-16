@@ -10,9 +10,10 @@ public class SeaMine : MonoBehaviour
     [SerializeField] private AudioClip mineBlastAudio;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        if (collision.gameObject.tag == "Player" && gameManager != null)
         {
-            AudioSource.PlayClipAtPoint(mineBlastAudio, transform.position);
+            gameManager.PlayAudioClipAtPoint(mineBlastAudio, transform.position);
             HealthBar.Instance.TakeDamage(damage);
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);

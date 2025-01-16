@@ -8,17 +8,19 @@ public class Tilemap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        if (collision.gameObject.tag == "Player" && gameManager != null)
         {
-            AudioSource.PlayClipAtPoint(bumpAudio, Camera.main.transform.position);
+            gameManager.PlayAudioClipAtPoint(bumpAudio, transform.position);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        if (collision.gameObject.tag == "Player" && gameManager != null)
         {
-            AudioSource.PlayClipAtPoint(bumpAudio, Camera.main.transform.position);
+            gameManager.PlayAudioClipAtPoint(bumpAudio, transform.position);
         }
     }
 
