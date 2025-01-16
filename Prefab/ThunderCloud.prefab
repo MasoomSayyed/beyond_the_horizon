@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb76c2c8a0510f440ac66e5e97934110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioThunderClip: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
 --- !u!114 &1800745016778530366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,8 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f004670d38d0d1b45b7bbe04e2453270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSplashClip: {fileID: 8300000, guid: 1042116145336654db2693b8c116c664, type: 3}
-  thunderCloudClip: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
 --- !u!1 &7468177246183830934
 GameObject:
   m_ObjectHideFlags: 0

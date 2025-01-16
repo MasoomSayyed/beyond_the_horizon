@@ -8,6 +8,7 @@ public class ThunderClouds : MonoBehaviour
 {
     public static ThunderClouds Instance;
     public event EventHandler OnCloudEntered;
+    [SerializeField] AudioClip audioThunderClip;
 
     private float damage = 1f;
 

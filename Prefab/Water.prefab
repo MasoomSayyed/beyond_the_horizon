@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2746362238689982349}
   - component: {fileID: 8605114620642667840}
   - component: {fileID: 5166860874127384598}
+  - component: {fileID: -4234043650152227385}
   m_Layer: 6
   m_Name: Water
   m_TagString: Water
@@ -79,7 +80,7 @@ SpriteShapeRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1862294947
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 5
   m_Color: {r: 0.03324306, g: 0.35117218, b: 0.7660377, a: 0.34117648}
   m_MaskInteraction: 2
@@ -259,5 +260,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f004670d38d0d1b45b7bbe04e2453270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4234043650152227385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849715097406855363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f77abcf58bf9d2459afad8b75006fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   audioSplashClip: {fileID: 8300000, guid: 4af4c172d32dbee45bd0200bf433b98c, type: 3}
-  thunderCloudClip: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
