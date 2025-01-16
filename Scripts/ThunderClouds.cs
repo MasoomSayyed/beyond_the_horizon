@@ -10,9 +10,10 @@ public class ThunderClouds : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        if (collision.gameObject.tag == "Player" && gameManager != null)
         {
-            AudioSource.PlayClipAtPoint(audioThunderClip, transform.position);
+            gameManager.PlayAudioClipAtPoint(audioThunderClip, transform.position);
             HealthBar.Instance.TakeDamage(damage);
         }
     }
@@ -21,9 +22,10 @@ public class ThunderClouds : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        if (collision.gameObject.tag == "Player" && gameManager != null)
         {
-            AudioSource.PlayClipAtPoint(audioThunderClip, transform.position);
+            gameManager.PlayAudioClipAtPoint(audioThunderClip, transform.position);
         }
     }
 

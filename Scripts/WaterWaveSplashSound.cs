@@ -8,29 +8,19 @@ public class WaterWaveSplashSound : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {   
-        GameManager[] gameManager = FindObjectsByType<GameManager>(FindObjectsSortMode.None);
-        Debug.Log(gameManager.Length);
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
         if (collision.gameObject.tag == "Player" )
         {
-            if (gameManager != null)
-            {
-                AudioSource.PlayClipAtPoint(audioSplashClip, transform.position, gameManager[0].soundEffectsVolume);
-            }
-            else
-            {
-                AudioSource.PlayClipAtPoint(audioSplashClip, transform.position);
-            }
+            gameManager.PlayAudioClipAtPoint(audioSplashClip, transform.position);
         }
     }
-
-
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         GameManager gameManager = FindFirstObjectByType<GameManager>();
         if (collision.gameObject.tag == "Player" && gameManager != null)
         {
-            //AudioSource.PlayClipAtPoint(audioSplashClip, transform.position);
+            gameManager.PlayAudioClipAtPoint(audioSplashClip, transform.position);
         }
     }
 }

@@ -9,7 +9,7 @@ using UnityEngine.U2D;
 public class WaterWave : MonoBehaviour
 {
     private int numSplinePoints = 1; //1 spline points for X scale of 1
-    [SerializeField] private float spread = 0.5f;
+    [SerializeField] private float spread = 0.5f; // Variable to control the amount of reverberations on the water surface
     [SerializeField] public float stiffness = 0.1f;
     [SerializeField] public float damping = 0.1f;
     private float force = -0.25f; // -1/0.25 for Y scale of 1
@@ -56,10 +56,10 @@ public class WaterWave : MonoBehaviour
         }
         else
         {
-            Debug.LogError("SpriteShapeController component not found on this GameObject.");
+            Debug.LogError("SpriteShapeController component not found on WaterWave GameObject.");
         }
     }
-
+    // Function to create a splash by adding velocity to the water spring's height
     private void CreateSplash(int index, float velocity)
     {
         if (index >= 0 && index < waterSprings.Count)
@@ -78,10 +78,10 @@ public class WaterWave : MonoBehaviour
         // Update Water Springs
         for (int i = 0; i < waterSprings.Count; i++)
         {
-            spline.SetPosition(i + 2, waterSprings[i].WaterSpringEffect(spline.GetPosition(i + 2).x, spline.GetPosition(i + 2).y));
+            spline.SetPosition(i + 2, waterSprings[i].WaterSpringEffect(spline.GetPosition(i + 2).x, spline.GetPosition(i + 2).y)); // Adding water springs to every spline position
         }
-        float[] leftHeightDiffs = new float[waterSprings.Count];
-        float[] rightHeightDiffs = new float[waterSprings.Count];
+        float[] leftHeightDiffs = new float[waterSprings.Count]; // Array to contain the height differences of the water springs to the left of the one in contact with the PlayerShip
+        float[] rightHeightDiffs = new float[waterSprings.Count]; // Array to contain the height differences of the water springs to the right of the one in contact with the PlayerShip
         for (int i = 0; i < waterSprings.Count; i++)
         {
             if (i > 0)
@@ -98,17 +98,18 @@ public class WaterWave : MonoBehaviour
             }
         }
     }
-
+    // A class for the springs in water
     private class WaterSpring
     {
-        public float stiffness;
-        public float damping;
-        public float height;
-        public float targetHeight;
-        public float velocity = 0f;
-        private float force = 0f;
-        private float mass = 1f;
+        public float stiffness; // Stiffness of the water
+        public float damping; // Damping effect of the water spring
+        public float height; // Height of the water spring
+        public float targetHeight; // Target height of the water spring
+        public float velocity = 0f; // Velocity to add to the height and change its y position
+        private float force = 0f; // Force of the PlayerShip
+        private float mass = 1f; // Generalized mass of the PlayerShip
 
+        // Constructor
         public WaterSpring(float height, float targetHeight, float stiffness, float damping)
         {
             this.height = height;
@@ -116,41 +117,42 @@ public class WaterWave : MonoBehaviour
             this.stiffness = stiffness;
             this.damping = damping;
         }
+
+        // Function to update the y position of the WaterSpring
         public Vector3 WaterSpringEffect(float xPos, float yPos)
         {
-            // F = ma - kx
-            force = -1 * ((stiffness * (height - targetHeight)) + (damping * velocity));
-            velocity += force / mass;
+            force = -1 * ((stiffness * (height - targetHeight)) + (damping * velocity)); // F = - ((stiffness * dy) + k(dx/dt))
+            velocity += force / mass; // integral(F/m)
             height = yPos + velocity;
             return new Vector3(xPos, height, 0);
         }
     }
 
+    // A function to handle triggers when the PlayerShip enters/exits the water collider
     private void PlayerTrigger(Collider2D collider, float force)
     {
         if (collider.CompareTag("Player"))
         {
-            Rigidbody2D ship = collider.GetComponent<Rigidbody2D>();
+            Rigidbody2D ship = collider.GetComponent<Rigidbody2D>(); // Getting the RigidBody2D component
             if (ship != null)
             {
-                Bounds spriteBounds = ship.GetComponentInChildren<SpriteRenderer>().bounds;
-                var contactPointStartX = spriteBounds.center[0] - (spriteBounds.size[0] / 2);
-                var contactPointEndX = spriteBounds.center[0] + (spriteBounds.size[0] / 2);
-                List<int> splineContactIndices = new List<int>();
+                Bounds spriteBounds = ship.GetComponentInChildren<SpriteRenderer>().bounds; // Getting the bounds of the PlayerShip
+                var contactPointStartX = spriteBounds.center[0] - (spriteBounds.size[0] / 2); // Getting the X value of the starting contact point
+                var contactPointEndX = spriteBounds.center[0] + (spriteBounds.size[0] / 2); // Getting the X value of the ending contact point
+                List<int> splineContactIndices = new List<int>(); // Creating a List to handle spilne indices
                 for (int i = 0; i < waterSprings.Count; i++)
                 {
                     var splineWolrdPosX = transform.TransformPoint(spline.GetPosition(i + 2)).x;
-                    if (splineWolrdPosX >= contactPointStartX && splineWolrdPosX <= contactPointEndX)
+                    if (splineWolrdPosX >= contactPointStartX && splineWolrdPosX <= contactPointEndX) // Adding the spline point only if it is in contact with the PlayerShip
                     {
                         splineContactIndices.Add(i);
                     }
                 }
+                // Creating a splash using the List of spline point indices
                 for (int i = 0; i < splineContactIndices.Count; i++)
                 {
                     CreateSplash(splineContactIndices[i], force);
                 }
-
-
             }
         }
     }

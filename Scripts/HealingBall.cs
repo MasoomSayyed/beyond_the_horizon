@@ -8,9 +8,10 @@ public class HealingBall : MonoBehaviour
     [SerializeField] private AudioClip healItemAudio;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        if (collision.gameObject.tag == "Player" && gameManager != null)
         {
-            AudioSource.PlayClipAtPoint(healItemAudio, transform.position);
+            gameManager.PlayAudioClipAtPoint(healItemAudio, transform.position);
             HealthBar.Instance.RestoreHealth(Heal);
             Destroy(gameObject);
         }

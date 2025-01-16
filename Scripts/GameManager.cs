@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,11 +12,13 @@ public class GameManager : MonoBehaviour
 
     //Pause Screen
     public GameObject pauseScreen;
-    public float soundEffectsVolume; // SoundEffects volume
+    public string gameManagerInitialScene;
+    public float soundEffectsVolume = 1; // SoundEffects volume
 
 
     private void Awake()
     {
+        gameManagerInitialScene = SceneManager.GetActiveScene().name;
         GameObject[] gameManagers = GameObject.FindGameObjectsWithTag("GameController");
         if (gameManagers.Length > 1)
         {
@@ -39,5 +43,17 @@ public class GameManager : MonoBehaviour
         //hide pause screen
         pauseScreen.SetActive(false);
          Time.timeScale = 1;
+    }
+
+    public void PlayAudioClipAtPoint(AudioClip audioClip, Vector3 position)
+    {
+        if (gameManagerInitialScene == "MainMenu")
+        {
+            AudioSource.PlayClipAtPoint(audioClip, position, soundEffectsVolume);
+        }
+        else
+        {
+            AudioSource.PlayClipAtPoint(audioClip, position);
+        }
     }
 }
