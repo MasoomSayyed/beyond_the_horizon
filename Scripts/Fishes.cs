@@ -48,11 +48,11 @@ public class Fishes : MonoBehaviour
             fishesInHoarde = new CapsuleCollider2D[numFishes];
             hoardeSpeed = new float[numFishes];
 
-            float minSpeed = .1f;
-            float maxSpeed = .4f;
+            float minSpeed = .2f;
+            float maxSpeed = .5f;
             for (int i = 0; i < numFishes; i++)
             {
-                hoardeSpeed[i] = Random.Range(minSpeed * Time.deltaTime, maxSpeed * Time.deltaTime);
+                hoardeSpeed[i] = Random.Range(minSpeed, maxSpeed);
                 if (Mathf.Round(Random.Range(0, 1)) > 0)
                 {
                     hoardeSpeed[i] *= -1; // -ve Velocity for left and +ve velocity for right
@@ -82,7 +82,7 @@ public class Fishes : MonoBehaviour
         {
             for (int i = 0; i < hoarde.fishesInHoarde.Length; i++)
             {
-                hoarde.fishesInHoarde[i].transform.position = new Vector3(hoarde.fishesInHoarde[i].transform.position.x + hoarde.hoardeSpeed[i], hoarde.fishesInHoarde[i].transform.position.y, 0);
+                hoarde.fishesInHoarde[i].transform.position = new Vector3(hoarde.fishesInHoarde[i].transform.position.x + (hoarde.hoardeSpeed[i] * Time.deltaTime), hoarde.fishesInHoarde[i].transform.position.y, 0);
                 FishesCollision collision = hoarde.fishesInHoarde[i].GetComponent<FishesCollision>();
                 if (collision.hasCollided)
                 {
