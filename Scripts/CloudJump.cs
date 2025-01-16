@@ -16,15 +16,6 @@ public class CloudJump : MonoBehaviour
         cloudPosition = transform.position;
         jumpAngleInRad = jumpAngle * Mathf.Deg2Rad;
     }
-    void Update()
-    {
-
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision != null && collision.CompareTag("Player"))

@@ -36290,7 +36290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d3732971a3c6843b14cbd8680c8a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bumpAudio: {fileID: 8300000, guid: d443e7782b14b3c4aa453a13208b3bc1, type: 3}
+  bumpAudio: {fileID: 8300000, guid: 1d74880bed4586644a16a79a2d9dc8af, type: 3}
 --- !u!1 &922521112
 GameObject:
   m_ObjectHideFlags: 0

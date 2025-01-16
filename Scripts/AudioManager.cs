@@ -8,7 +8,6 @@ public class AudioManager : MonoBehaviour
     private GameObject soundSlider, soundEffectsSlider;
     private Slider volumeSlider, volumeEffectsSlider;
     private AudioSource[] audioSources;
-
     void Start()
     {
         soundSlider = GameObject.FindGameObjectWithTag("SoundSlider");
