@@ -8,6 +8,8 @@ public class HealthBar : MonoBehaviour
 {
     public static HealthBar Instance;
 
+    private string currentSceneName;
+
     private float maxHealth = 100f;
     [SerializeField] private Image healthBarImage;
 
@@ -18,6 +20,7 @@ public class HealthBar : MonoBehaviour
         Instance = this;
         currentHealth = maxHealth;
         healthBarImage.fillAmount = currentHealth;
+        currentSceneName = SceneManager.GetActiveScene().name;
     }
 
     private void Update()
@@ -57,7 +60,7 @@ public class HealthBar : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(currentSceneName);
         }
     }
 }

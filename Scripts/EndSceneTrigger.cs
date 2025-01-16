@@ -10,14 +10,24 @@ public class EndSceneTrigger : MonoBehaviour
     // {
     //     gameObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
     // }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
         // foreach (GameObject gameobject in gameObjects)
         // {
         //  Destroy(gameobject);
         // }
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && currentSceneName == "TutorialScene")
         {
+
+            SceneManager.LoadScene("Level 1");
+        }
+        else if (collision.CompareTag("Player") && currentSceneName == "Level 1")
+        {
+
             SceneManager.LoadScene("EndScene");
         }
     }

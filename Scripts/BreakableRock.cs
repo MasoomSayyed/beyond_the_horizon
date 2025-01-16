@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BreakableRock : MonoBehaviour
 {
-    private int damage = 40;
+    private int damage = 2;
     [SerializeField] private AudioClip audioRockbreakClip;
     private void OnCollisionEnter2D(Collision2D collision)
     {

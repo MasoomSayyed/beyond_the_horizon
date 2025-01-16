@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,14 +6,21 @@ using UnityEngine;
 
 public class ThunderClouds : MonoBehaviour
 {
+    public static ThunderClouds Instance;
+    public event EventHandler OnCloudEntered;
+
     private float damage = 1f;
-    [SerializeField] private AudioClip audioThunderClip;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            AudioSource.PlayClipAtPoint(audioThunderClip, transform.position);
+            OnCloudEntered?.Invoke(this, EventArgs.Empty);
             HealthBar.Instance.TakeDamage(damage);
         }
     }
@@ -23,7 +31,7 @@ public class ThunderClouds : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            AudioSource.PlayClipAtPoint(audioThunderClip, transform.position);
+            OnCloudEntered?.Invoke(this, EventArgs.Empty);
         }
     }
 

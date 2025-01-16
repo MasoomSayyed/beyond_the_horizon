@@ -60,7 +60,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
             isGliding = true;
             playerRigidbody.drag = .3f;
             playerRigidbody.gravityScale = .1f;
-            StaminaBar.Instance.DepleteStamina(.6f);
+            StaminaBar.Instance.DepleteStamina(.4f);
         }
 
         else
@@ -136,7 +136,7 @@ public class MovementSystemDifferentModes : MonoBehaviour
     // this is to implement the dash
     public void Dash()
     {
-        float dashForce = 25f;
+        float dashForce = 20f;
         playerRigidbody.AddForce(lastMoveDirSub * dashForce, ForceMode2D.Impulse);
     }
 

@@ -8,6 +8,10 @@ using UnityEngine.U2D;
 
 public class WaterWave : MonoBehaviour
 {
+    public static WaterWave Instance;
+
+    public event EventHandler OnWaterEntered;
+
     private int numSplinePoints = 1; //1 spline points for X scale of 1
     [SerializeField] private float spread = 0.5f;
     [SerializeField] public float stiffness = 0.1f;
@@ -17,6 +21,11 @@ public class WaterWave : MonoBehaviour
     private SpriteShapeController spriteShapeController;
     private UnityEngine.U2D.Spline spline;
     [SerializeField] private float volume;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -159,11 +168,19 @@ public class WaterWave : MonoBehaviour
         //  AudioSource.PlayClipAtPoint(splashSound, collider.transform.position, volume);
         PlayerTrigger(collider, force);
         TriggerToSailing.Instance.SetIsJumpingFalse();
+        if (collider.gameObject.tag == "Player")
+        {
+            OnWaterEntered?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
         // AudioSource.PlayClipAtPoint(splashSound, collider.transform.position, volume);
         PlayerTrigger(collider, -force);
+        if (collider.gameObject.tag == "Player")
+        {
+            OnWaterEntered?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

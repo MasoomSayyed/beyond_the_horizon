@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float health = 100f;
+    public float health = 120f;
     public float maxHealth = 100f;
     [SerializeField] private float seaMineDamage = 20f;
     [SerializeField] private Image healthBar;

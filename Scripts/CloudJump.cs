@@ -8,7 +8,7 @@ public class CloudJump : MonoBehaviour
     private Vector2 jumpDirection;
     private float jumpAngleInRad;
     [SerializeField] private float verticalCloudDisplacement = 2f;
-    [SerializeField] private float jumpAngle = 30f;
+    [SerializeField] private float jumpAngle = 90f;
     [SerializeField] private float jumpingForce = 3f;
     [SerializeField] private float delay = 0.5f;
     void Start()
@@ -23,13 +23,13 @@ public class CloudJump : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision != null && collision.CompareTag("Player"))
         {
-            
+
             transform.position = new Vector3(cloudPosition.x, cloudPosition.y - verticalCloudDisplacement, cloudPosition.z);
             Rigidbody2D rb2d = collision.GetComponent<Rigidbody2D>();
             StartCoroutine(SetCloudToOriginalPosition(rb2d));

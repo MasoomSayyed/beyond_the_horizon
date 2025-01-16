@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealingBall : MonoBehaviour
 {
-    private int Heal = 20;
+    private int Heal = 30;
     [SerializeField] private AudioClip healItemAudio;
     private void OnCollisionEnter2D(Collision2D collision)
     {
